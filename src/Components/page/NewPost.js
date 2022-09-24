@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import CommentListItem from '../list/CommentListItem'
 
+
+
 class NewPost extends Component {
 
     render() {
