@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import NewPost from "./Components/page/NewPost";
+import PostView from "./Components/page/PostView";
 
 
 const post = {
@@ -15,15 +16,17 @@ const post = {
 }
 
 function App() {
+
   return (
     <>
-    <h1>Test</h1>
+    {/* <h1>Test</h1>
       <NewPost 
         title={post.title}
         author={post.author}
         body={post.body}
         comments={post.comments}
-        />
+        /> */}
+        <PostView/>
     </>
   );
 }
