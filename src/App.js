@@ -5,12 +5,13 @@ import Header from "./Components/page/Header";
 import PostList from "./Components/page/PostList";
 import PostDetail from "./Components/page/PostDetail";
 import WritePost from './Components/page/WritePost'
-
+import RegisterButton from "./Components/ui/RegisterButton";
 
 function App() {
   const [mode, setMode] = useState('WELCOME')
   const [id, setId] = useState(null)
   const [nextId, setNextId] = useState(4);
+
 
   const [posts, setPosts] = useState ([
       {id:1,  title: "My First Post", body: "This is my first post."},    
@@ -44,6 +45,7 @@ function App() {
   
   return(
       <>
+          <RegisterButton />
           <Header title="MyPost" onChangeMode={()=>{
               setMode ('WELCOME')
           }}></Header>
