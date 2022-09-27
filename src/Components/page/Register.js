@@ -6,14 +6,6 @@ class Register extends Component {
     this.state = {};
   }
 
-  handleRegister = () => {
-    fetch("http://localhost:3003/networgram/user/register", {
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((resJson) => {});
-  };
-
   render() {
     return (
       <>
