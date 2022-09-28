@@ -7,6 +7,16 @@ import PostDetail from "./Components/page/PostDetail";
 import WritePost from './Components/page/WritePost'
 import RegisterButton from "./Components/ui/RegisterButton";
 
+// let baseURL = ''
+
+// if (process.env.NODE_ENV === 'development') {
+//     baseURL = 'http://localhost:3003'
+//   } else {
+//     baseURL = 'your heroku bakend url here'
+//   }
+  
+//   console.log('current base URL:', baseURL)
+
 function App() {
   const [mode, setMode] = useState('WELCOME')
   const [id, setId] = useState(null)
