@@ -10,9 +10,7 @@ class App extends Component {
     return(
       <>
          <PostDetail />
-         <WritePost 
-        //  handleAddPost={this.handleAddPost}
-         />
+         <WritePost />
       </>
    
     )
