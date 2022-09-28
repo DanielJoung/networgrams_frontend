@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import WritePost from "./WritePost";
 
 let baseURL = "";
 
@@ -36,6 +36,15 @@ class PostDetail extends Component {
   }
 
 
+  handleAddPost = (post) => {
+    const copypost = [...this.state.post]
+    copypost.unshift(post)
+    this.setState({
+      post: copypost,
+      name: ''
+    })
+  }
+
 
   render() {
     return(
@@ -57,6 +66,7 @@ class PostDetail extends Component {
           }
         </tbody>
       </table>
+      <WritePost handleAddPost={this.handleAddPost}/>
       </div>
     )
   }
