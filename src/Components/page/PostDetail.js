@@ -35,6 +35,8 @@ class PostDetail extends Component {
     })
   }
 
+
+
   render() {
     return(
       <div>
@@ -43,12 +45,12 @@ class PostDetail extends Component {
         <tbody>
           {this.state.post.map((post, index) => {
               return (
-                <table>
+                <>
                   <tr key={post._id} >
                   <td>{post.name}</td>
                   <td>{post.content}</td>
                   </tr>
-                </table>
+               </>
          
               )
             })

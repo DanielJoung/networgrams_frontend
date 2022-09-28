@@ -1,23 +1,44 @@
-import React from "react";
+import React, {Component} from "react";
 // import { useState } from "react";
 // import "bulma/css/bulma.min.css";
 import "./App.css";
 // import Header from "./Components/page/Header";
 // import PostList from "./Components/page/PostList";
 import PostDetail from "./Components/page/PostDetail";
-// import WritePost from "./Components/page/WritePost";
+import WritePost from "./Components/page/WritePost";
 // import RegisterButton from "./Components/ui/RegisterButton";
 // import LoginButton from "./Components/ui/LoginButton";
 
+class App extends Component {
 
-function App() {
-  return(
-    <>
-       <PostDetail />
-    </>
- 
-  )
+  // handleAddPost= (post) => {
+  //   const copyPost = [...this.state.post]
+  //   copyPost.unshift(post)
+  //   this.setState({
+  //       post: copyPost,
+  //       name: ''
+  //   })
+  //   }
+
+
+  render() {
+    return(
+      <>
+         <PostDetail />
+         <WritePost 
+        //  handleAddPost={this.handleAddPost}
+         />
+      </>
+   
+    )
+  }
+
+
+
+
 }
+
+
 
 
 // function App() {
