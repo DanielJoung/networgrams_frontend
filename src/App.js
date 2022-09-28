@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "bulma/css/bulma.min.css";
+
 import "./App.css";
 import Header from "./Components/page/Header";
 import PostList from "./Components/page/PostList";
@@ -8,14 +8,15 @@ import PostDetail from "./Components/page/PostDetail";
 import WritePost from "./Components/page/WritePost";
 import RegisterButton from "./Components/ui/RegisterButton";
 import LoginButton from "./Components/ui/LoginButton";
+import Login from "./Components/page/Login";
 
-let baseURL = "";
+// let baseURL = process.env.REACT_APP_BACKEND_URL;
 
-if (process.env.NODE_ENV === "development") {
-  baseURL = "http://localhost:3003";
-} else {
-  baseURL = process.env.REACT_APP_BACKEND_URL;
-}
+// if (process.env.NODE_ENV === "development") {
+//   baseURL = "http://localhost:3003";
+// } else {
+//   baseURL = process.env.REACT_APP_BACKEND_URL;
+// }
 
 function App() {
   const [mode, setMode] = useState("WELCOME");
@@ -59,6 +60,7 @@ function App() {
 
   return (
     <>
+      <Login />
       <RegisterButton />
       <LoginButton />
       <Header
