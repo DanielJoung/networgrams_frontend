@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "bulma/css/bulma.min.css";
 import { Form } from "react-bulma-components";
+import axios from "axios";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  constructor() {
+    super();
   }
+  componentDidMount = () => {};
 
   render() {
     return (
