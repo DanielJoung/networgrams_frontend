@@ -17,6 +17,16 @@ if (process.env.NODE_ENV === "development") {
   baseURL = process.env.REACT_APP_BACKEND_URL;
 }
 
+// let baseURL = ''
+
+// if (process.env.NODE_ENV === 'development') {
+//     baseURL = 'http://localhost:3003'
+//   } else {
+//     baseURL = 'your heroku bakend url here'
+//   }
+  
+//   console.log('current base URL:', baseURL)
+
 function App() {
   const [mode, setMode] = useState("WELCOME");
   const [id, setId] = useState(null);
