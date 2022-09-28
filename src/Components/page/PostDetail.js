@@ -41,7 +41,8 @@ class PostDetail extends Component {
     copyPost.unshift(post)
     this.setState({
       post: copyPost,
-      name: ''
+      name: '',
+      content: ''
     })
   }
 
@@ -66,29 +67,26 @@ class PostDetail extends Component {
     return(
       <div>
         <h1>Post</h1>
-        <table>
-        <tbody>
+        {/* <table>
+        <tbody> */}
           {this.state.post.map((post, index) => {
               return (
                 <>
-                  <tr key={post._id} >
-                  <td>{post.name}</td>
-                  <td>{post.content}</td>
-                  <td>{post.like}</td>
-                  <td
+                  <p key={post._id} >{post.name}</p>
+                  <p>{post.content}</p>
+                  <p
 										onClick={()=>{
 											this.handleAddLike(post)
 										}}>
-											❤️
-									</td>
-                  </tr>
+											❤️ {post.like}
+									</p>
                </>
          
               )
             })
           }
-        </tbody>
-      </table>
+        {/* </tbody>
+      </table> */}
       <WritePost handleAddPost={this.handleAddPost}/>
       </div>
     )

@@ -4,13 +4,14 @@ class WritePost extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: ''
+            name: '',
+            content: ''
         }
     }
 
     handleChange = (event) => {
         this.setState({
-                name: event.target.value
+            [event.target.id]: event.target.value
         })
     }
 
@@ -18,7 +19,10 @@ class WritePost extends Component {
         event.preventDefault()
         fetch('http://localhost:3003/networgram/post', {
           method: 'POST',
-          body: JSON.stringify({name: this.state.name}),
+          body: JSON.stringify({
+            name: this.state.name,
+            content: this.state.content
+            }),
           headers: {
             'Content-Type': 'application/json'
           }
@@ -27,8 +31,8 @@ class WritePost extends Component {
             console.log('NewForm - resJson', resJson)
             this.props.handleAddPost(resJson)
             this.setState({
-                    name: ''
-                // {content: ''}
+                    name: '',
+                    content: ''
             })
         }).catch (error => console.error({'Error': error}))
       }
@@ -38,23 +42,28 @@ class WritePost extends Component {
             <>
                 <h1>NewPost</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="name">Name: </label>
-                    <p><input 
+                    <div>
+                        <label htmlFor="name">Name: </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            onChange={this.handleChange}
+                            value={this.state.name}
+                            placeholder="add your name"/>
+                    </div>
+           
+                    <div>
+                        <textarea
                         type="text" 
-                        id="name" 
-                        name="name" 
-                        onChange={this.handleChange}
-                        value={this.state.name}
-                        placeholder="add your name"/></p>
-                    {/* <label htmlFor="content">content: </label>
-                    <p><textarea
-                        type="text" 
-                        id="name" 
-                        name="name" 
+                        id="content" 
+                        name="content" 
                         onChange={this.handleChange}
                         value={this.state.content}
                         placeholder="add a post">
-                    </textarea></p> */}
+                        </textarea>
+                    </div>
+                    
                     <input type="submit" value="Post" />
                  </form>
             </>
