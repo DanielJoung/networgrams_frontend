@@ -16,38 +16,21 @@ class CommentList extends Component {
         }
     }
 
-    getComment = () => {
-        fetch(baseURL + '/networgram/post/:id/comment')
-        .then(res => {
-          if(res.status === 200) {
-            return res.json()
-          } else {
-            return []
-          }
-        }).then(data => {
-          console.log('data', data)
-          this.setState({comment: data.comment})
-        })
-      }
-    
     render() {
         return(
             <div>
-                {this.state.comment.map((comment, index) => {
-                    return(
-                        <div>
-                            <p>Comment</p>
-                            <p key={comment._id}>{comment.name}</p>
-                            <p>{comment.content}</p>
-                        </div>
-                    )
-                })
-                }
-          
-            </div>
+              {this.state.comment.map((comment, index) => {
+                  return(
+                      <div>
+                          <p>Comment</p>
+                          <p key={comment._id}>{comment.name}</p>
+                          <p>{comment.content}</p>
+                      </div>
+                  )}
+                )}
+              </div>
             
-        )
-    }
+    )}
 }
 
 export default CommentList
