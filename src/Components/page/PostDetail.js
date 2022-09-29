@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CommentList from './CommentList';
 import WritePost from "./WritePost";
 
 let baseURL = "";
@@ -67,11 +68,10 @@ class PostDetail extends Component {
     return(
       <div>
         <h1>Post</h1>
-        {/* <table>
-        <tbody> */}
           {this.state.post.map((post, index) => {
               return (
-                <>
+ 
+                <div>
                   <p key={post._id} >{post.name}</p>
                   <p>{post.content}</p>
                   <p
@@ -80,13 +80,13 @@ class PostDetail extends Component {
 										}}>
 											❤️ {post.like}
 									</p>
-               </>
-         
+                  <CommentList />
+                </div>
+     
               )
             })
           }
-        {/* </tbody>
-      </table> */}
+          
       <WritePost handleAddPost={this.handleAddPost}/>
       </div>
     )
