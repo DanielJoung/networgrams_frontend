@@ -1,7 +1,7 @@
 import React from "react";
 
 function RegisterButton() {
-  return <a href="http://localhost:3003/networgram/user/register">Register</a>;
+  return <button></button>;
 }
 
 export default RegisterButton;
