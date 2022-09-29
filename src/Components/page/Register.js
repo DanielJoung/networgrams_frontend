@@ -3,9 +3,6 @@ import "bulma/css/bulma.min.css";
 import { Form, Button, Icon } from "react-bulma-components";
 import axios from "axios";
 
-// const { Input, Field, Control, Label, Icon } = Form;
-// const { Group } = Button;
-
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -54,9 +51,7 @@ class Register extends Component {
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <Icon align="left">
-              <i className="github" />
-            </Icon>
+            <Icon align="left"></Icon>
           </Form.Control>
         </Form.Field>
         <Form.Field>
@@ -69,9 +64,7 @@ class Register extends Component {
               value={this.state.id}
               onChange={this.handleChange}
             />
-            <Icon align="left">
-              <i className="github" />
-            </Icon>
+            <Icon align="left"></Icon>
           </Form.Control>
         </Form.Field>
         <Form.Field>
