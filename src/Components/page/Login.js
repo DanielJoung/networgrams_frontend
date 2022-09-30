@@ -30,7 +30,14 @@ class Login extends Component {
       id: "",
       password: "",
     });
+    window.location = "/";
   };
+
+  handleCancel = (e) => {
+    e.preventDefault();
+    window.location = "/";
+  };
+
   render() {
     return (
       <>
@@ -64,11 +71,22 @@ class Login extends Component {
             <Icon align="left"></Icon>
           </Form.Control>
         </Form.Field>
-        <Button.Group>
-          <Button fullwidth rounded color="primary" onClick={this.handleButton}>
-            Log In
-          </Button>
-        </Button.Group>
+        <Form.Field kind="group">
+          <Form.Control>
+            <Button color="link" onClick={this.handleButton}>
+              Log In
+            </Button>
+          </Form.Control>
+          <Form.Control>
+            <Button
+              color="link"
+              colorVariant="light"
+              onClick={this.handleCancel}
+            >
+              Cancel
+            </Button>
+          </Form.Control>
+        </Form.Field>
       </>
     );
   }
