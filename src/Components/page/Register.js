@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "bulma/css/bulma.min.css";
-import { Form, Button, Icon } from "react-bulma-components";
-import axios from "axios";
 
 class Register extends Component {
   constructor(props) {
@@ -13,29 +11,35 @@ class Register extends Component {
     };
   }
 
+  getUser = async (e) => {
+    e.preventDefault();
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/networgram/user/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.state.name,
+          id: this.state.id,
+          password: this.state.password,
+        }),
+      }
+    );
+    const data = await res.json();
+    if (data.message) {
+      alert(`${data.message}`);
+    } else {
+      window.location = "/user/signin";
+    }
+    console.log(data);
+  };
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
-  };
-
-  handleButton = (e) => {
-    e.preventDefault();
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/networgram/user/register`, {
-        name: this.state.name,
-        id: this.state.id,
-        password: this.state.password,
-      })
-      .then((res) => console.log(res.data));
-
-    this.setState({
-      name: "",
-      id: "",
-      password: "",
-    });
-
-    // window.location = "/";
   };
 
   handleCancel = (e) => {
@@ -49,64 +53,71 @@ class Register extends Component {
     return (
       <>
         <h1>Register</h1>
-        <Form.Field>
-          <Form.Label>Name</Form.Label>
-          <Form.Control>
-            <Form.Input
-              placeholder="Username"
-              name="name"
-              id="name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <Icon align="left"></Icon>
-          </Form.Control>
-        </Form.Field>
-        <Form.Field>
-          <Form.Label>ID</Form.Label>
-          <Form.Control>
-            <Form.Input
-              placeholder="ID"
-              name="id"
-              id="id"
-              value={this.state.id}
-              onChange={this.handleChange}
-            />
-            <Icon align="left"></Icon>
-          </Form.Control>
-        </Form.Field>
-        <Form.Field>
-          <Form.Label>Password</Form.Label>
-          <Form.Control>
-            <Form.Input
-              placeholder="Password"
-              name="password"
-              type="password"
-              id="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <Icon align="left">
-              <i className="github" />
-            </Icon>
-          </Form.Control>
-        </Form.Field>
-        <Form.Field kind="group">
-          <Form.Control>
-            <Button color="link" onClick={this.handleButton}>
-              Submit
-            </Button>
-          </Form.Control>
-          <Form.Control>
-            <Button
-              color="link"
-              colorVariant="light"
+        <form onSubmit={this.getUser}>
+          <div className="field">
+            <label className="label">Name</label>
+            <div className="control has-icons-left">
+              <input
+                className="input"
+                type="text"
+                placeholder="Username"
+                name="name"
+                id="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
+              <span className="icon is-left">
+                <i className="rbc-icon github"></i>
+              </span>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">ID</label>
+            <div className="control has-icons-left">
+              <input
+                placeholder="Id"
+                className="input"
+                type="text"
+                name="id"
+                id="id"
+                value={this.state.id}
+                onChange={this.handleChange}
+              />
+              <span className="icon is-left">
+                <i className="rbc-icon github"></i>
+              </span>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left">
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <span className="icon is-left">
+                <i className="rbc-icon lock"></i>
+              </span>
+            </div>
+          </div>
+          <div className="buttons">
+            <button className="is-primary is-rounded button" tabindex="0">
+              Register
+            </button>
+            <button
+              className="is-danger is-rounded button"
+              tabindex="0"
               onClick={this.handleCancel}
             >
               Cancel
-            </Button>
-          </Form.Control>
-        </Form.Field>
+            </button>
+          </div>
+        </form>
       </>
     );
   }
