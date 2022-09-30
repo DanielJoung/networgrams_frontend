@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "bulma/css/bulma.min.css";
 import { Form, Button, Icon } from "react-bulma-components";
 import axios from "axios";
@@ -35,10 +34,18 @@ class Register extends Component {
       id: "",
       password: "",
     });
+
+    // window.location = "/";
+  };
+
+  handleCancel = (e) => {
+    e.preventDefault();
+    window.location = "/";
   };
 
   render() {
     // console.log(this.state);
+
     return (
       <>
         <h1>Register</h1>
@@ -84,11 +91,22 @@ class Register extends Component {
             </Icon>
           </Form.Control>
         </Form.Field>
-        <Button.Group>
-          <Button fullwidth rounded color="primary" onClick={this.handleButton}>
-            Register
-          </Button>
-        </Button.Group>
+        <Form.Field kind="group">
+          <Form.Control>
+            <Button color="link" onClick={this.handleButton}>
+              Submit
+            </Button>
+          </Form.Control>
+          <Form.Control>
+            <Button
+              color="link"
+              colorVariant="light"
+              onClick={this.handleCancel}
+            >
+              Cancel
+            </Button>
+          </Form.Control>
+        </Form.Field>
       </>
     );
   }
