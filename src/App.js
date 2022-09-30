@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PostDetail from "./Components/page/PostDetail";
+import Header from "./Components/page/Header";
 import Register from "./Components/page/Register";
 import Login from "./Components/page/Login";
 import Header from "./Components/ui/Header";
@@ -11,6 +12,8 @@ class App extends Component {
     return (
       <>
         <Header />
+        {/* <Register /> */}
+        <PostDetail />
         <Router>
           <Routes>
             <Route path="/user/register" element={<Register />} />

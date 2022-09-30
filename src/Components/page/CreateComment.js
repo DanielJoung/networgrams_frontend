@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class WritePost extends Component {
+class CreateComment extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -17,7 +17,7 @@ class WritePost extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        fetch('http://localhost:3003/networgram/post', {
+        fetch('http://localhost:3003/networgram/post/:id/comment', {
           method: 'POST',
           body: JSON.stringify({
             name: this.state.name,
@@ -29,7 +29,7 @@ class WritePost extends Component {
         }).then (res => res.json())
           .then (resJson => {
             console.log('NewForm - resJson', resJson)
-            this.props.handleAddPost(resJson)
+            this.props.handleAddComment(resJson)
             this.setState({
                     name: '',
                     content: ''
@@ -40,37 +40,33 @@ class WritePost extends Component {
     render() {
         return(
             <>
-                <h1>NewPost</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <label htmlFor="name">Name: </label>
                         <input 
                             type="text" 
                             id="name" 
                             name="name" 
                             onChange={this.handleChange}
                             value={this.state.name}
-                            placeholder="add your name"/>
+                            placeholder="name"/>
                     </div>
            
                     <div>
-                        <textarea
+                        <input
                         type="text" 
                         id="content" 
                         name="content" 
                         onChange={this.handleChange}
                         value={this.state.content}
-                        placeholder="add a post">
-                        </textarea>
+                        placeholder="comment">
+                        </input>
                     </div>
                     
-                    <input type="submit" value="Post" />
+                    <input type="submit" value="Add a comment" />
                  </form>
             </>
         )
     }
 }
     
-
-
-export default WritePost
+export default CreateComment
