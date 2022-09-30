@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.post {
+  border: 1px solid green;
+  margin: 30px;
+}
+
+.comment {
+  border: 1px solid orange;
+ 
+}
