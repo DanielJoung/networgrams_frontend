@@ -2,6 +2,8 @@ import React from "react";
 import RegisterPage from "../ui/RegisterPage";
 import LoginPage from "../ui/LoginPage";
 import LogoutButton from "../ui/LogoutButton";
+import PostPage from "../ui/PostPage";
+import Welcome from "../ui/Welcome";
 
 function Header(props) {
   return (
@@ -15,12 +17,11 @@ function Header(props) {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
+              <Welcome />
               <RegisterPage />
               <LoginPage />
               <LogoutButton />
-              <a className="button is-danger" href="/post">
-                Post
-              </a>
+              <PostPage />
             </div>
           </div>
         </div>

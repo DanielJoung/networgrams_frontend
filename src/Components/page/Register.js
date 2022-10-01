@@ -57,6 +57,7 @@ class Register extends Component {
     return (
       <>
         <h1 id="log-reg-h1">Register</h1>
+        {/* <p>{data.message}</p> */}
         <form onSubmit={this.getUser} id="form">
           <div className="field">
             <label className="label">Name</label>

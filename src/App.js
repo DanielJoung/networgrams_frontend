@@ -7,6 +7,12 @@ import Login from "./Components/page/Login";
 import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+    };
+  }
   render() {
     return (
       <>

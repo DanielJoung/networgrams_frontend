@@ -7,8 +7,11 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       id: "",
       password: "",
+      success: false,
+      jsonData: [],
     };
   }
   handleChange = (e) => {
@@ -32,21 +35,36 @@ class Login extends Component {
         }),
       }
     );
+    // res.then((res) => res.json).then((resJson) => {});
     const data = await res.json();
     if (data.message) {
       alert(`${data.message}`);
+      this.state.success = false;
     } else if (data.error) {
       alert(`${data.error}`);
+      this.state.success = false;
     } else {
-      window.location = "/";
+      this.state.success = true;
+      // return <p>{this.state.name}</p>;
+      // window.location = "/";
     }
 
-    console.log(data, "data");
+    this.state.jsonData.push(data);
+    this.setState({
+      name: "",
+      id: "",
+      password: "",
+      // jsonData: [],
+      success: false,
+    });
+    console.log(this.state.jsonData);
+    // console.log(this.state.success, "success");
   };
 
   render() {
     return (
       <>
+        <p>{this.state.jsonData.name}</p>
         <h1 id="log-reg-h1">Sign in</h1>
         <form onSubmit={this.getUser} id="form">
           <div className="field">
