@@ -1,7 +1,13 @@
 import React from "react";
 
 function LoginButton() {
-  return <a href="http://localhost:3003/networgram/user/signin">Sign In</a>;
+  return (
+    <input
+      type="submit"
+      className="is-primary is-rounded button"
+      value="Sign In"
+    />
+  );
 }
 
 export default LoginButton;
