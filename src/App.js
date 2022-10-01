@@ -4,7 +4,6 @@ import PostDetail from "./Components/page/PostDetail";
 import Header from "./Components/page/Header";
 import Register from "./Components/page/Register";
 import Login from "./Components/page/Login";
-import Header from "./Components/ui/Header";
 import "./App.css";
 
 class App extends Component {
@@ -12,8 +11,7 @@ class App extends Component {
     return (
       <>
         <Header />
-        {/* <Register /> */}
-        <PostDetail />
+
         <Router>
           <Routes>
             <Route path="/user/register" element={<Register />} />
