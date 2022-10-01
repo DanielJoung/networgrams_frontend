@@ -61,6 +61,7 @@ class PostDetail extends Component {
     this.setState({
       post: copyPost,
       name: '',
+      title:'',
       content: ''
     })
   }
@@ -107,7 +108,7 @@ class PostDetail extends Component {
   }
 
   deleteComment = (id) => {
-    fetch(baseURL + '/networgram/post/id/comment' + id, {
+    fetch(baseURL + '/networgram/post/:id/comment' + id, {
       method: 'DELETE'
     }).then (response => {
       const findIndex = this.state.comment.findIndex(comment => comment._id === id)
@@ -128,6 +129,7 @@ class PostDetail extends Component {
             return(
               <div className='post' key={post._id}>
                 <p >{post.name}</p>
+                <p>{post.title}</p>
                 <p >{post.content}</p>
                 <p
                 onClick={()=>{
@@ -135,21 +137,20 @@ class PostDetail extends Component {
                 }}>
                 ❤️ {post.like}
                 </p>
-              <div className='comment'>
-                {this.state.comment.map((comment,index)=>{
-                  {console.log('comment', comment.content)}
-                    return(
-                     
-                      <div >
-                        <CommentList key={comment._id} name={comment.name} comment={comment.content}/>
-                        <button onClick={()=>this.deleteComment(comment._id)}>❌</button>
-                      </div>
-                    )
-                  })}
-                  <CreateComment handleAddComment={this.handleAddComment}/>
-              </div>
+                  <div className='comment'>
+                    {this.state.comment.map((comment,index)=>{
+                      // {console.log('comment', comment.content)}
+                        return(
+                          <div >
+                            <CommentList key={comment._id} name={comment.name} comment={comment.content}/>
+                            <button onClick={()=>this.deleteComment(comment._id)}>❌</button>
+                          </div>
+                        )
+                      })}
+                      <CreateComment handleAddComment={this.handleAddComment}/>
+                  </div>
                 
-                <button onClick={()=>this.editPost(post._id)}>Eidt the Post</button>
+                <button onClick={()=>this.editPost(post._id)}>Edit the Post</button>
                 <button onClick={()=>this.deletePost(post._id)}>Delete the Post</button>
             
               </div>
