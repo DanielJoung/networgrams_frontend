@@ -1,7 +1,6 @@
 
 import React, {Component} from 'react'
 import CommentList from './CommentList';
-import WritePost from './WritePost';
 import CreateComment from './CreateComment'
 
 let baseURL = "";
@@ -26,8 +25,8 @@ class PostDetail extends Component {
     this.getComment();
   }
 
-  getPost = () => {
-    fetch(baseURL + "/networgram/post")
+  getPost = (post) => {
+    fetch(baseURL + "/networgram/post/" + post._id)
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -41,40 +40,30 @@ class PostDetail extends Component {
       });
   };
 
-  getComment = () => {
-    fetch(baseURL + '/networgram/post/:id/comment')
-    .then(res => {
-      if(res.status === 200) {
-        return res.json()
-      } else {
-        return []
-      }
-    }).then(data => {
-      console.log('comment data', data)
-      this.setState({comment: data.comment})
-    })
-  }
+  // getComment = () => {
+  //   fetch(baseURL + '/networgram/post/comment')
+  //   .then(res => {
+  //     if(res.status === 200) {
+  //       return res.json()
+  //     } else {
+  //       return []
+  //     }
+  //   }).then(data => {
+  //     console.log('comment data', data)
+  //     this.setState({comment: data.comment})
+  //   })
+  // }
 
-  handleAddPost = (post) => {
-    const copyPost = [...this.state.post];
-    copyPost.unshift(post);
-    this.setState({
-      post: copyPost,
-      name: '',
-      title:'',
-      content: ''
-    })
-  }
 
-  handleAddComment = (comment) => {
-    const copyComment = [...this.state.comment];
-    copyComment.unshift(comment);
-    this.setState({
-      comment: copyComment,
-      name: '',
-      content: ''
-    })
-  }
+  // handleAddComment = (comment) => {
+  //   const copyComment = [...this.state.comment];
+  //   copyComment.unshift(comment);
+  //   this.setState({
+  //     comment: copyComment,
+  //     name: '',
+  //     content: ''
+  //   })
+  // }
 
   handleAddLike = (post) => {
     fetch(baseURL + "/networgram/post/" + post._id, {
@@ -107,17 +96,17 @@ class PostDetail extends Component {
     })
   }
 
-  deleteComment = (id) => {
-    fetch(baseURL + '/networgram/post/:id/comment' + id, {
-      method: 'DELETE'
-    }).then (response => {
-      const findIndex = this.state.comment.findIndex(comment => comment._id === id)
-      const copyComment = [...this.state.comment]
-     alert('Are you sure to delete the comment?')
-     copyComment.splice(findIndex, 1)
-     this.setState({comment:copyComment})
-    })
-  }
+  // deleteComment = (id) => {
+  //   fetch(baseURL + '/networgram/post/comment' + id, {
+  //     method: 'DELETE'
+  //   }).then (response => {
+  //     const findIndex = this.state.comment.findIndex(comment => comment._id === id)
+  //     const copyComment = [...this.state.comment]
+  //    alert('Are you sure to delete the comment?')
+  //    copyComment.splice(findIndex, 1)
+  //    this.setState({comment:copyComment})
+  //   })
+  // }
 
 
   render() {
@@ -157,7 +146,6 @@ class PostDetail extends Component {
             )}
           )}
         </div>
-        <WritePost  handleAddPost={this.handleAddPost}/>
     </>
  )} 
 }
