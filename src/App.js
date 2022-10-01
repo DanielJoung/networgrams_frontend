@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import PostList from "./Components/page/PostList"
 import PostDetail from "./Components/page/PostDetail";
 import Header from "./Components/page/Header";
 import Register from "./Components/page/Register";
@@ -16,7 +17,8 @@ class App extends Component {
           <Routes>
             <Route path="/user/register" element={<Register />} />
             <Route path="/user/signin" element={<Login />} />
-            <Route path="/post" element={<PostDetail />} />
+            <Route path="/post" element={<PostList />} />
+            <Route path="/post/:id" element={<PostDetail />} />
           </Routes>
         </Router>
       </>

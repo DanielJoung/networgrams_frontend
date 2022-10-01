@@ -5,6 +5,7 @@ class WritePost extends Component {
         super(props)
         this.state = {
             name: '',
+            title:'',
             content: ''
         }
     }
@@ -21,6 +22,7 @@ class WritePost extends Component {
           method: 'POST',
           body: JSON.stringify({
             name: this.state.name,
+            title: this.state.title,
             content: this.state.content
             }),
           headers: {
@@ -32,6 +34,7 @@ class WritePost extends Component {
             this.props.handleAddPost(resJson)
             this.setState({
                     name: '',
+                    title:'',
                     content: ''
             })
         }).catch (error => console.error({'Error': error}))
@@ -51,6 +54,17 @@ class WritePost extends Component {
                             onChange={this.handleChange}
                             value={this.state.name}
                             placeholder="add your name"/>
+                    </div>
+
+                    <div>
+                        <label htmlFor="title">Title: </label>
+                        <input
+                        type="text" 
+                        id="title" 
+                        name="title" 
+                        onChange={this.handleChange}
+                        value={this.state.title}
+                        placeholder="add a title"/>
                     </div>
            
                     <div>
