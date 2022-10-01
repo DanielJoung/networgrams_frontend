@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import RegisterButton from "../ui/RegisterButton";
+import CancelButton from "../ui/CancelButton";
 import "bulma/css/bulma.min.css";
 
 class Register extends Component {
@@ -30,9 +32,16 @@ class Register extends Component {
     const data = await res.json();
     if (data.message) {
       alert(`${data.message}`);
+    } else if (
+      this.state.name === "" ||
+      this.state.id === "" ||
+      this.state.password === ""
+    ) {
+      alert("Fill out empty space");
     } else {
       window.location = "/user/signin";
     }
+
     console.log(data);
   };
 
@@ -42,18 +51,13 @@ class Register extends Component {
     });
   };
 
-  handleCancel = (e) => {
-    e.preventDefault();
-    window.location = "/";
-  };
-
   render() {
     // console.log(this.state);
 
     return (
       <>
-        <h1>Register</h1>
-        <form onSubmit={this.getUser}>
+        <h1 id="log-reg-h1">Register</h1>
+        <form onSubmit={this.getUser} id="form">
           <div className="field">
             <label className="label">Name</label>
             <div className="control has-icons-left">
@@ -66,9 +70,6 @@ class Register extends Component {
                 value={this.state.name}
                 onChange={this.handleChange}
               />
-              <span className="icon is-left">
-                <i className="rbc-icon github"></i>
-              </span>
             </div>
           </div>
           <div className="field">
@@ -83,9 +84,6 @@ class Register extends Component {
                 value={this.state.id}
                 onChange={this.handleChange}
               />
-              <span className="icon is-left">
-                <i className="rbc-icon github"></i>
-              </span>
             </div>
           </div>
           <div className="field">
@@ -100,22 +98,11 @@ class Register extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <span className="icon is-left">
-                <i className="rbc-icon lock"></i>
-              </span>
             </div>
           </div>
           <div className="buttons">
-            <button className="is-primary is-rounded button" tabindex="0">
-              Register
-            </button>
-            <button
-              className="is-danger is-rounded button"
-              tabindex="0"
-              onClick={this.handleCancel}
-            >
-              Cancel
-            </button>
+            <RegisterButton />
+            <CancelButton />
           </div>
         </form>
       </>
