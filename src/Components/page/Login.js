@@ -1,26 +1,27 @@
 import React, { Component } from "react";
 import LoginButton from "../ui/LoginButton";
 import CancelButton from "../ui/CancelButton";
+import Header from "./Header";
 import "bulma/css/bulma.min.css";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       id: "",
       password: "",
-      success: false,
-      jsonData: [],
+      error: "",
+      success: true,
     };
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   };
 
-  getUser = async (e) => {
+  postUser = async (e) => {
     e.preventDefault();
     const res = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/networgram/user/signin`,
@@ -35,40 +36,33 @@ class Login extends Component {
         }),
       }
     );
-    // res.then((res) => res.json).then((resJson) => {});
     const data = await res.json();
+    console.log(data.error);
+
     if (data.message) {
-      alert(`${data.message}`);
-      this.state.success = false;
+      return (this.state.error = "Invalid ID or Password");
     } else if (data.error) {
-      alert(`${data.error}`);
-      this.state.success = false;
+      return (this.state.error = "Invalid ID or Password");
     } else {
-      this.state.success = true;
-      // return <p>{this.state.name}</p>;
-      // window.location = "/";
+      window.location = "/";
     }
 
-    this.state.jsonData.push(data);
-    this.setState({
-      name: "",
-      id: "",
-      password: "",
-      // jsonData: [],
-      success: false,
-    });
-    console.log(this.state.jsonData);
-    // console.log(this.state.success, "success");
+    if (data._id) {
+      return this.state.success === true;
+    } else {
+      return;
+    }
   };
 
   render() {
     return (
       <>
-        <p>{this.state.jsonData.name}</p>
+        <Header success={this.state.success} name={this.state.name} />
         <h1 id="log-reg-h1">Sign in</h1>
-        <form onSubmit={this.getUser} id="form">
+        <form onSubmit={this.postUser} id="form">
           <div className="field">
             <label className="label">ID</label>
+            <label style={{ color: "red" }}>{this.state.error}</label>
             <div className="control has-icons-left">
               <input
                 placeholder="Id"

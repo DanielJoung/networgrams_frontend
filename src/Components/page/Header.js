@@ -17,11 +17,13 @@ function Header(props) {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <Welcome />
-              <RegisterPage />
-              <LoginPage />
-              <LogoutButton />
-              <PostPage />
+              {props.success === true ? (
+                <Welcome name={props.name} />
+              ) : (
+                <Welcome />
+              )}
+              {props.success === true ? <LogoutButton /> : <LoginPage />}
+              {props.success === true ? <PostPage /> : <RegisterPage />}
             </div>
           </div>
         </div>

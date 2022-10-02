@@ -14,7 +14,7 @@ class LogoutButton extends Component {
     return (
       <a
         className="is-danger is-rounded button"
-        // href="/"
+        href="/"
         onSubmit={this.getLogout}
       >
         Sign Out

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RegisterButton from "../ui/RegisterButton";
 import CancelButton from "../ui/CancelButton";
+import Header from "./Header";
 import "bulma/css/bulma.min.css";
 
 class Register extends Component {
@@ -10,8 +11,15 @@ class Register extends Component {
       name: "",
       id: "",
       password: "",
+      error: "",
     };
   }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  };
 
   getUser = async (e) => {
     e.preventDefault();
@@ -31,36 +39,30 @@ class Register extends Component {
     );
     const data = await res.json();
     if (data.message) {
-      alert(`${data.message}`);
+      return (this.state.error = "ID is already taken");
     } else if (
       this.state.name === "" ||
       this.state.id === "" ||
       this.state.password === ""
     ) {
-      alert("Fill out empty space");
+      return (this.state.error = "Please fill input");
     } else {
       window.location = "/user/signin";
     }
 
-    console.log(data);
-  };
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value,
-    });
+    // console.log(data);
   };
 
   render() {
-    // console.log(this.state);
-
+    // console.log(this);
     return (
       <>
+        <Header />
         <h1 id="log-reg-h1">Register</h1>
-        {/* <p>{data.message}</p> */}
         <form onSubmit={this.getUser} id="form">
           <div className="field">
             <label className="label">Name</label>
+            <p style={{ color: "red" }}>{this.state.error}</p>
             <div className="control has-icons-left">
               <input
                 className="input"
