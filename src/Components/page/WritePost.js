@@ -48,15 +48,7 @@ class WritePost extends Component {
         <h1>NewPost</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={this.handleChange}
-              value={this.state.name}
-              placeholder="add your name"
-            />
+            <label htmlFor="name">Name: {localStorage.getItem("name")}</label>
           </div>
 
           <div>

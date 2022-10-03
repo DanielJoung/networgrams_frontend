@@ -8,15 +8,43 @@ import PostList from "./PostList";
 class PostDetail extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      content: "",
+    };
   }
+
+  componentDidMount() {
+    this.getPost();
+  }
+
+  getPost = () => {
+    // e.preventDefault();
+    fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/networgram/post/" +
+        localStorage.getItem("post_id")
+    )
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          return [];
+        }
+      })
+      .then((data) => {
+        console.log("post data", data.showPost);
+        this.setState({
+          content: data.showPost.content,
+        });
+      });
+  };
 
   render() {
     return (
       <>
-        <Header />
+        {/* <Header /> */}
         <h1>Post Detail</h1>
-        <div>{this.props.content}</div>
+        <p>{this.state.content}</p>
       </>
     );
   }

@@ -43,10 +43,11 @@ class Login extends Component {
       return alert("Invalid ID or Password");
     } else {
       window.location = "/";
-      localStorage.setItem("id", this.state.id);
-      localStorage.setItem("password", this.state.password);
+      localStorage.setItem("id", data.foundUser.id);
+      localStorage.setItem("name", data.foundUser.name);
+      localStorage.setItem("password", data.foundUser.password);
     }
-    console.log(localStorage.getItem("id"));
+    // console.log(localStorage.getItem("id"));
   };
 
   render() {

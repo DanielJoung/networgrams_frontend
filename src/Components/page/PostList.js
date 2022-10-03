@@ -6,8 +6,6 @@ import Header from "./Header";
 import PostDetail from "./PostDetail";
 // import CreateComment from './CreateComment'
 
-import PostShowPage from "../ui/PostShowPage";
-
 let baseURL = "";
 
 if (process.env.NODE_ENV === "development") {
@@ -51,12 +49,12 @@ class PostList extends Component {
       post: copyPost,
       name: "",
       title: "",
-      content: "",
     });
   };
 
   handleMovePage = (id) => {
     // console.log(this.state.post);
+    localStorage.setItem("post_id", id);
     window.location = `/post/${id}`;
   };
 
