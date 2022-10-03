@@ -28,7 +28,7 @@ class PostList extends Component {
 
   getPost = () => {
     // e.preventDefault();
-    fetch(baseURL + "/networgram/post")
+    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post")
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -58,6 +58,17 @@ class PostList extends Component {
     window.location = `/post/${id}`;
   };
 
+  deletePost = (id) => {
+    fetch(process.env.REACT_APP_BACKEND_URL + '/networgram/post/' + id, {
+      method: 'DELETE'
+    }).then (response => {
+      const findIndex = this.state.post.findIndex(post => post._id === id)
+      const copyPost = [...this.state.post]
+      copyPost.splice(findIndex, 1)
+      this.setState({post:copyPost})
+    })
+  }
+
   render() {
     return (
       <>
@@ -73,9 +84,11 @@ class PostList extends Component {
                     Title: {post.title}
                   </a>
                 </p>
+                <button onClick={()=>this.deletePost(post._id)}>Delete the Post</button>
               </div>
             );
           })}
+          
         </div>
         <button>Write a new post</button>
         <WritePost handleAddPost={this.handleAddPost} />
