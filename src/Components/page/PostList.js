@@ -78,7 +78,9 @@ class PostList extends Component {
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p>Name: {post.name}</p>
+                <p className='name'>Name: 
+                {localStorage.getItem('id')}
+                </p>
                 <p>
                   <a onClick={() => this.handleMovePage(post._id)}>
                     Title: {post.title}
