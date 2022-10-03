@@ -2,6 +2,7 @@
 import React, {Component} from 'react'
 import CommentList from './CommentList';
 import CreateComment from './CreateComment'
+import PostList from './PostList'
 
 let baseURL = "";
 
@@ -16,17 +17,17 @@ class PostDetail extends Component {
     super(props);
     this.state = {
       post: [],
-      comment:[]
+      // comment:[]
     };
   }
 
   componentDidMount() {
     this.getPost();
-    this.getComment();
+    // this.getComment();
   }
 
-  getPost = (post) => {
-    fetch(baseURL + "/networgram/post/" + post._id)
+  getPost = (id) => {
+    fetch(baseURL + "/networgram/post/" + id)
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -65,36 +66,36 @@ class PostDetail extends Component {
   //   })
   // }
 
-  handleAddLike = (post) => {
-    fetch(baseURL + "/networgram/post/" + post._id, {
-      method: "PUT",
-      body: JSON.stringify({ like: post.like + 1 }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((resJson) => {
-        const copyPost = [...this.state.post];
-        const findIndex = this.state.post.findIndex(
-          (post) => post._id === resJson._id
-        );
-        copyPost[findIndex].like = resJson.like;
-        this.setState({ post: copyPost });
-      });
-  };
+  // handleAddLike = (post) => {
+  //   fetch(baseURL + "/networgram/post/" + post._id, {
+  //     method: "PUT",
+  //     body: JSON.stringify({ like: post.like + 1 }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((resJson) => {
+  //       const copyPost = [...this.state.post];
+  //       const findIndex = this.state.post.findIndex(
+  //         (post) => post._id === resJson._id
+  //       );
+  //       copyPost[findIndex].like = resJson.like;
+  //       this.setState({ post: copyPost });
+  //     });
+  // };
 
-  deletePost = (id) => {
-    fetch(baseURL + '/networgram/post/' + id, {
-      method: 'DELETE'
-    }).then (response => {
-      const findIndex = this.state.post.findIndex(post => post._id === id)
-      const copyPost = [...this.state.post]
-     alert('Are you sure to delete the post?')
-     copyPost.splice(findIndex, 1)
-     this.setState({post:copyPost})
-    })
-  }
+  // deletePost = (id) => {
+  //   fetch(baseURL + '/networgram/post/' + id, {
+  //     method: 'DELETE'
+  //   }).then (response => {
+  //     const findIndex = this.state.post.findIndex(post => post._id === id)
+  //     const copyPost = [...this.state.post]
+  //    alert('Are you sure to delete the post?')
+  //    copyPost.splice(findIndex, 1)
+  //    this.setState({post:copyPost})
+  //   })
+  // }
 
   // deleteComment = (id) => {
   //   fetch(baseURL + '/networgram/post/comment' + id, {
@@ -112,8 +113,10 @@ class PostDetail extends Component {
   render() {
     return (
      <> 
-      <h1>Post</h1>
-        <div >
+      <h1>Post Detail</h1>
+      {/* <PostList /> */}
+   
+        {/* <div >
           {this.state.post.map((post, index) =>{
             return(
               <div className='post' key={post._id}>
@@ -145,7 +148,7 @@ class PostDetail extends Component {
               </div>
             )}
           )}
-        </div>
+        </div> */}
     </>
  )} 
 }

@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 class PostDetail extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -50,9 +51,11 @@ class PostDetail extends Component {
     })
   }
 
-  handleCancel = (e) => {
-    e.preventDefault();
-    window.location = `/post/${this.state.post._id}`;
+  handleMovePage = (id) => {
+    // console.log('e',e)
+    console.log('this.state', this.state)
+    console.log('this.state', this.state.post)
+    window.location = `/post/${id}`;
   };
 
   render() {
@@ -64,7 +67,7 @@ class PostDetail extends Component {
             return(
               <div key={post._id}>
                 <p >Name: {post.name}</p>
-                <p><a onClick={this.handleCancel}>Title: {post.title}</a></p>
+                <p><a onClick={()=>{this.handleMovePage(post._id)}}>Title: {post.title}</a></p>
                 
               </div>
             )}
