@@ -73,26 +73,25 @@ class PostList extends Component {
     return (
       <>
         <Header />
-        <h1>Post</h1>
         <div>
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className='name'>Name: 
+                <p className='name'>
                 {localStorage.getItem('id')}
                 </p>
-                <p>
-                  <a onClick={() => this.handleMovePage(post._id)}>
-                    Title: {post.title}
+                <p class="box">
+                  <a onClick={() => this.handleMovePage(post._id)}> {post.title}
                   </a>
                 </p>
-                <button onClick={()=>this.deletePost(post._id)}>Delete the Post</button>
+                    <button class="button is-small is-danger" onClick={()=>this.deletePost(post._id)}>Delete</button>
+               
               </div>
             );
           })}
           
         </div>
-        <button>Write a new post</button>
+        {/* <button>Write a new post</button> */}
         <WritePost handleAddPost={this.handleAddPost} />
       </>
     );

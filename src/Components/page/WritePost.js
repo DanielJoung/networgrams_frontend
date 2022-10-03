@@ -45,15 +45,14 @@ class WritePost extends Component {
   render() {
     return (
       <>
-        <h1>NewPost</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="name">Name: {localStorage.getItem("name")}</label>
+            <label htmlFor="name"> {localStorage.getItem("name")}</label>
           </div>
 
           <div>
-            <label htmlFor="title">Title: </label>
             <input
+              class="input is-info"
               type="text"
               id="title"
               name="title"
@@ -65,16 +64,19 @@ class WritePost extends Component {
 
           <div>
             <textarea
+              class="textarea" 
               type="text"
               id="content"
               name="content"
+              rows="10"
               onChange={this.handleChange}
               value={this.state.content}
               placeholder="add a post"
             ></textarea>
           </div>
 
-          <input type="submit" value="Post" />
+         <input class="button is-success" type="submit" value="Submit"></input>
+
         </form>
       </>
     );

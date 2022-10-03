@@ -44,7 +44,7 @@ class PostDetail extends Component {
       <>
         {/* <Header /> */}
         <h1>Post Detail</h1>
-        <p>{this.state.content}</p>
+        <p class="box">{this.state.content}</p>
       </>
     );
   }
