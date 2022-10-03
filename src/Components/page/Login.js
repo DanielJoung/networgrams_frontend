@@ -10,8 +10,6 @@ class Login extends Component {
     this.state = {
       id: "",
       password: "",
-      error: "",
-      success: true,
     };
   }
 
@@ -37,32 +35,29 @@ class Login extends Component {
       }
     );
     const data = await res.json();
-    console.log(data.error);
+    console.log(data);
 
     if (data.message) {
-      return (this.state.error = "Invalid ID or Password");
+      return alert("Invalid ID or Password");
     } else if (data.error) {
-      return (this.state.error = "Invalid ID or Password");
+      return alert("Invalid ID or Password");
     } else {
       window.location = "/";
+      localStorage.setItem("id", this.state.id);
+      localStorage.setItem("password", this.state.password);
     }
-
-    if (data._id) {
-      return this.state.success === true;
-    } else {
-      return;
-    }
+    console.log(localStorage.getItem("id"));
   };
 
   render() {
     return (
       <>
-        <Header success={this.state.success} name={this.state.name} />
+        <Header id={this.state.id} />
         <h1 id="log-reg-h1">Sign in</h1>
         <form onSubmit={this.postUser} id="form">
           <div className="field">
             <label className="label">ID</label>
-            <label style={{ color: "red" }}>{this.state.error}</label>
+
             <div className="control has-icons-left">
               <input
                 placeholder="Id"

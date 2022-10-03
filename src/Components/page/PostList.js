@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { Routes, Route } from "react-router-dom";
 // import CommentList from './CommentList';
 import WritePost from "./WritePost";
 import Header from "./Header";
+import PostDetail from "./PostDetail";
 // import CreateComment from './CreateComment'
 
 import PostShowPage from "../ui/PostShowPage";
@@ -49,6 +51,7 @@ class PostList extends Component {
       post: copyPost,
       name: "",
       title: "",
+      content: "",
     });
   };
 

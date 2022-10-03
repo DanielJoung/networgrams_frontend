@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 
-function Welcome() {
-  return <p>welcome </p>;
+class Welcome extends Component {
+  render() {
+    return <p> welcome {this.props.id}</p>;
+  }
 }
 
 export default Welcome;
