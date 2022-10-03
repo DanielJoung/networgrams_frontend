@@ -28,7 +28,7 @@ class PostList extends Component {
 
   getPost = () => {
     // e.preventDefault();
-    fetch(baseURL + "/networgram/post")
+    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post")
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -58,26 +58,40 @@ class PostList extends Component {
     window.location = `/post/${id}`;
   };
 
+  deletePost = (id) => {
+    fetch(process.env.REACT_APP_BACKEND_URL + '/networgram/post/' + id, {
+      method: 'DELETE'
+    }).then (response => {
+      const findIndex = this.state.post.findIndex(post => post._id === id)
+      const copyPost = [...this.state.post]
+      copyPost.splice(findIndex, 1)
+      this.setState({post:copyPost})
+    })
+  }
+
   render() {
     return (
       <>
         <Header />
-        <h1>Post</h1>
         <div>
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p>Name: {post.name}</p>
-                <p>
-                  <a onClick={() => this.handleMovePage(post._id)}>
-                    Title: {post.title}
+                <p className='name'>
+                {localStorage.getItem('id')}
+                </p>
+                <p class="box">
+                  <a onClick={() => this.handleMovePage(post._id)}> {post.title}
                   </a>
                 </p>
+                    <button class="button is-small is-danger" onClick={()=>this.deletePost(post._id)}>Delete</button>
+               
               </div>
             );
           })}
+          
         </div>
-        <button>Write a new post</button>
+        {/* <button>Write a new post</button> */}
         <WritePost handleAddPost={this.handleAddPost} />
       </>
     );

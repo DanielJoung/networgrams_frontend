@@ -3,7 +3,7 @@ import Header from "./Header";
 import CommentList from "./CommentList";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
-// import Header from "./Header";
+import LikeButton from "../ui/LikeButton";
 
 class PostDetail extends Component {
   constructor() {
@@ -39,12 +39,14 @@ class PostDetail extends Component {
       });
   };
 
+
   render() {
     return (
       <>
         {/* <Header /> */}
         <h1>Post Detail</h1>
-        <p>{this.state.content}</p>
+        <p class="box">{this.state.content}</p>
+        <LikeButton/>
       </>
     );
   }
