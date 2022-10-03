@@ -1,7 +1,9 @@
-
-import React, {Component} from 'react'
+import React, { Component } from "react";
+import { Routes, Route } from "react-router-dom";
 // import CommentList from './CommentList';
-import WritePost from './WritePost';
+import WritePost from "./WritePost";
+import Header from "./Header";
+import PostDetail from "./PostDetail";
 // import CreateComment from './CreateComment'
 
 let baseURL = "";
@@ -12,13 +14,11 @@ if (process.env.NODE_ENV === "development") {
   baseURL = process.env.REACT_APP_BACKEND_URL;
 }
 
-class PostDetail extends Component {
-
+class PostList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       post: [],
-      
     };
   }
 
@@ -27,6 +27,7 @@ class PostDetail extends Component {
   }
 
   getPost = () => {
+    // e.preventDefault();
     fetch(baseURL + "/networgram/post")
       .then((res) => {
         if (res.status === 200) {
@@ -36,7 +37,7 @@ class PostDetail extends Component {
         }
       })
       .then((data) => {
-        console.log("post data", data);
+        console.log("post data", data.post);
         this.setState({ post: data.post });
       });
   };
@@ -46,37 +47,41 @@ class PostDetail extends Component {
     copyPost.unshift(post);
     this.setState({
       post: copyPost,
-      name: '',
-      title:'',
-    })
-  }
+      name: "",
+      title: "",
+    });
+  };
 
   handleMovePage = (id) => {
-    // console.log('e',e)
-    console.log('this.state', this.state)
-    console.log('this.state', this.state.post)
+    // console.log(this.state.post);
+    localStorage.setItem("post_id", id);
     window.location = `/post/${id}`;
   };
 
   render() {
     return (
-     <> 
-      <h1>Post</h1>
-        <div >
-          {this.state.post.map((post, index) =>{
-            return(
+      <>
+        <Header />
+        <h1>Post</h1>
+        <div>
+          {this.state.post.map((post, index) => {
+            return (
               <div key={post._id}>
-                <p >Name: {post.name}</p>
-                <p><a onClick={()=>{this.handleMovePage(post._id)}}>Title: {post.title}</a></p>
-                
+                <p>Name: {post.name}</p>
+                <p>
+                  <a onClick={() => this.handleMovePage(post._id)}>
+                    Title: {post.title}
+                  </a>
+                </p>
               </div>
-            )}
-          )}
+            );
+          })}
         </div>
         <button>Write a new post</button>
-        <WritePost  handleAddPost={this.handleAddPost}/>
-    </>
- )} 
+        <WritePost handleAddPost={this.handleAddPost} />
+      </>
+    );
+  }
 }
 
-export default PostDetail;
+export default PostList;

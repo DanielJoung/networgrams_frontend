@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginButton from "../ui/LoginButton";
 import CancelButton from "../ui/CancelButton";
+import Header from "./Header";
 import "bulma/css/bulma.min.css";
 
 class Login extends Component {
@@ -11,13 +12,14 @@ class Login extends Component {
       password: "",
     };
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   };
 
-  getUser = async (e) => {
+  postUser = async (e) => {
     e.preventDefault();
     const res = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/networgram/user/signin`,
@@ -33,24 +35,30 @@ class Login extends Component {
       }
     );
     const data = await res.json();
+    console.log(data);
+
     if (data.message) {
-      alert(`${data.message}`);
+      return alert("Invalid ID or Password");
     } else if (data.error) {
-      alert(`${data.error}`);
+      return alert("Invalid ID or Password");
     } else {
       window.location = "/";
+      localStorage.setItem("id", data.foundUser.id);
+      localStorage.setItem("name", data.foundUser.name);
+      localStorage.setItem("password", data.foundUser.password);
     }
-
-    console.log(data, "data");
+    // console.log(localStorage.getItem("id"));
   };
 
   render() {
     return (
       <>
+        <Header id={this.state.id} />
         <h1 id="log-reg-h1">Sign in</h1>
-        <form onSubmit={this.getUser} id="form">
+        <form onSubmit={this.postUser} id="form">
           <div className="field">
             <label className="label">ID</label>
+
             <div className="control has-icons-left">
               <input
                 placeholder="Id"

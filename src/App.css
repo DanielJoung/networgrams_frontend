@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Josefin+Sans&display=swap');
 
 * {
   margin: 0px
@@ -20,7 +19,7 @@
 
 /* Header */
 #header-title {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Bungee Spice', cursive;
   margin: 10px 0 10px 10px;
   font-size: 30px;
   color: inherit;
@@ -34,5 +33,5 @@
 #log-reg-h1 {
   font-family: 'Rubik Bubbles', cursive;
   text-align: center;
-  font-size: 25px;
+  font-size: 40px;
 }

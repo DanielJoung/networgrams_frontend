@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 
 class LogoutButton extends Component {
-  constructor() {
-    super();
-  }
-
-  getLogout = (e) => {
-    e.preventdefault();
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/networgram/user/signout`, {
-      method: "DELETE",
-    });
+  handleClick = () => {
+    localStorage.clear();
   };
 
   render() {
@@ -17,7 +10,7 @@ class LogoutButton extends Component {
       <a
         className="is-danger is-rounded button"
         href="/"
-        onSubmit={this.getLogout}
+        onClick={this.handleClick}
       >
         Sign Out
       </a>
