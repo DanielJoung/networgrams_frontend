@@ -6,8 +6,6 @@ import Header from "./Header";
 import PostDetail from "./PostDetail";
 // import CreateComment from './CreateComment'
 
-let baseURL = "";
-
 if (process.env.NODE_ENV === "development") {
   baseURL = "http://localhost:3003";
 } else {
@@ -79,7 +77,7 @@ class PostList extends Component {
               <div key={post._id}>
 
                 <p className='name'>
-                {localStorage.getItem('name')}
+                {localStorage.getItem('id')}
                 </p>
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}>
