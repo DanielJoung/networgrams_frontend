@@ -47,24 +47,21 @@ class WritePost extends Component {
       <>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label htmlFor="name"> {localStorage.getItem("name")}</label>
-          </div>
-
-          <div>
             <input
-              class="input is-info"
+              className="input is-info"
               type="text"
               id="title"
               name="title"
               onChange={this.handleChange}
               value={this.state.title}
               placeholder="add a title"
+              required
             />
           </div>
 
           <div>
             <textarea
-              class="textarea" 
+              className="textarea"
               type="text"
               id="content"
               name="content"
@@ -72,11 +69,11 @@ class WritePost extends Component {
               onChange={this.handleChange}
               value={this.state.content}
               placeholder="add a post"
+              required
             ></textarea>
           </div>
 
-         <input class="button is-success" type="submit" value="Submit"></input>
-
+          <input class="button is-success" type="submit" value="Submit"></input>
         </form>
       </>
     );

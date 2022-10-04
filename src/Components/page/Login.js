@@ -10,6 +10,7 @@ class Login extends Component {
     this.state = {
       id: "",
       password: "",
+      error: "",
     };
   }
 
@@ -37,15 +38,17 @@ class Login extends Component {
     const data = await res.json();
     console.log(data);
 
-    if (data.message) {
-      return alert("Invalid ID or Password");
-    } else if (data.error) {
-      return alert("Invalid ID or Password");
+    if (data.message || data.error) {
+      return this.setState({
+        error: "Invalid ID or Password",
+      });
     } else {
       window.location = "/";
       localStorage.setItem("id", data.foundUser.id);
       localStorage.setItem("name", data.foundUser.name);
       localStorage.setItem("password", data.foundUser.password);
+      localStorage.setItem("user_id", data.foundUser._id);
+      console.log(data.foundUser);
     }
     // console.log(localStorage.getItem("id"));
   };
@@ -55,6 +58,7 @@ class Login extends Component {
       <>
         <Header id={this.state.id} />
         <h1 id="log-reg-h1">Sign in</h1>
+        <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.postUser} id="form">
           <div className="field">
             <label className="label">ID</label>

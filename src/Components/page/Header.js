@@ -15,7 +15,11 @@ class Header extends Component {
   render() {
     return (
       <>
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav
+          className="navbar head"
+          role="navigation"
+          aria-label="main navigation"
+        >
           <div className="navbar-brand">
             <a className="navbar-item" href="/" id="header-title">
               Networgram
@@ -29,8 +33,12 @@ class Header extends Component {
                 ) : (
                   ""
                 )}
-                {localStorage.getItem("id") ? <LogoutButton /> : <LoginPage />}
-                {localStorage.getItem("id") ? <PostPage /> : <RegisterPage />}
+                {localStorage.getItem("id") ? (
+                  <LogoutButton />
+                ) : (
+                  <RegisterPage />
+                )}
+                {localStorage.getItem("id") ? <PostPage /> : <LoginPage />}
               </div>
             </div>
           </div>

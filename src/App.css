@@ -25,13 +25,28 @@
   color: inherit;
 }
 
+#welcome_p {
+  font-family: "Josefin Sans", cursive ;
+}
+
+.head {
+  white-space: nowrap;
+  overflow: auto;
+}
+
 /* form */
 #form {
   margin: 10px 30px 10px 30px;
 }
 
+/* LogIn Register page */
 #log-reg-h1 {
   font-family: 'Rubik Bubbles', cursive;
   text-align: center;
   font-size: 40px;
+}
+
+#reg-log-error {
+  color: red;
+  padding-left: 50px;
 }
