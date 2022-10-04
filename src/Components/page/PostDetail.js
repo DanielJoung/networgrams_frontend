@@ -3,7 +3,6 @@ import Header from "./Header";
 import CommentList from "./CommentList";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
-import LikeButton from "../ui/LikeButton";
 
 class PostDetail extends Component {
   constructor() {
@@ -78,6 +77,8 @@ class PostDetail extends Component {
           ❤️
         </button>
         <p>{this.state.post.like}</p>
+        <CommentList />
+
       </>
     );
   }
