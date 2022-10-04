@@ -7,11 +7,7 @@ class LogoutButton extends Component {
 
   render() {
     return (
-      <a
-        className="is-danger is-rounded button"
-        href="/"
-        onClick={this.handleClick}
-      >
+      <a className="button is-small" href="/" onClick={this.handleClick}>
         Sign Out
       </a>
     );

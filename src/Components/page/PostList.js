@@ -38,6 +38,7 @@ class PostList extends Component {
       })
       .then((data) => {
         console.log("post data", data.post);
+        console.log(data.post.name);
         this.setState({ post: data.post });
       });
   };
@@ -47,7 +48,6 @@ class PostList extends Component {
     copyPost.unshift(post);
     this.setState({
       post: copyPost,
-      name: "",
       title: "",
     });
   };
@@ -59,15 +59,15 @@ class PostList extends Component {
   };
 
   deletePost = (id) => {
-    fetch(process.env.REACT_APP_BACKEND_URL + '/networgram/post/' + id, {
-      method: 'DELETE'
-    }).then (response => {
-      const findIndex = this.state.post.findIndex(post => post._id === id)
-      const copyPost = [...this.state.post]
-      copyPost.splice(findIndex, 1)
-      this.setState({post:copyPost})
-    })
-  }
+    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
+      method: "DELETE",
+    }).then((response) => {
+      const findIndex = this.state.post.findIndex((post) => post._id === id);
+      const copyPost = [...this.state.post];
+      copyPost.splice(findIndex, 1);
+      this.setState({ post: copyPost });
+    });
+  };
 
   render() {
     return (
@@ -77,19 +77,25 @@ class PostList extends Component {
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
+
                 <p className='name'>
                 {localStorage.getItem('name')}
                 </p>
                 <p class="box">
-                  <a onClick={() => this.handleMovePage(post._id)}> {post.title}
+                  <a onClick={() => this.handleMovePage(post._id)}>
+                    {" "}
+                    {post.title}
                   </a>
                 </p>
-                    <button class="button is-small is-danger" onClick={()=>this.deletePost(post._id)}>Delete</button>
-               
+                <button
+                  class="button is-small is-danger"
+                  onClick={() => this.deletePost(post._id)}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
-          
         </div>
         {/* <button>Write a new post</button> */}
         <WritePost handleAddPost={this.handleAddPost} />

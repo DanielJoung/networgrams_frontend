@@ -38,14 +38,13 @@ class Register extends Component {
       }
     );
     const data = await res.json();
-    if (data.message) {
-      return (this.state.error = "ID is already taken");
-    } else if (
+    if (
+      data.message ||
       this.state.name === "" ||
       this.state.id === "" ||
       this.state.password === ""
     ) {
-      return (this.state.error = "Please fill input");
+      return this.setState({ error: "ID is already taken" });
     } else {
       window.location = "/user/signin";
     }
@@ -59,10 +58,11 @@ class Register extends Component {
       <>
         <Header />
         <h1 id="log-reg-h1">Register</h1>
+        <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.getUser} id="form">
           <div className="field">
             <label className="label">Name</label>
-            <p style={{ color: "red" }}>{this.state.error}</p>
+
             <div className="control has-icons-left">
               <input
                 className="input"
