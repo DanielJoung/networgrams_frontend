@@ -3,13 +3,12 @@ import Header from "./Header";
 import CommentList from "./CommentList";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
-import LikeButton from "../ui/LikeButton";
 
 class PostDetail extends Component {
   constructor() {
     super();
     this.state = {
-      content: "",
+      post: [],
     };
   }
 
@@ -32,21 +31,53 @@ class PostDetail extends Component {
         }
       })
       .then((data) => {
-        console.log("post data", data.showPost);
+        // console.log("post data", data.showPost);
         this.setState({
-          content: data.showPost.content,
+          post: data.showPost,
         });
+        // console.log("statePost", this.state.post);
       });
   };
 
+  handleAddLike = () => {
+    fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/networgram/post/" +
+        localStorage.getItem("post_id"),
+      {
+        method: "PUT",
+        body: JSON.stringify({ like: +this.state.post.like + 1 }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log("resJson", resJson);
+        const copyPost = this.state.post;
+        copyPost.like = resJson.like;
+        this.setState({ post: copyPost });
+        // console.log("addlikePost", this.state.post);
+      });
+  };
 
   render() {
     return (
       <>
         {/* <Header /> */}
         <h1>Post Detail</h1>
-        <p class="box">{this.state.content}</p>
-        <LikeButton/>
+
+        <p className="box">{this.state.post.content}</p>
+        <button
+          onClick={() => {
+            this.handleAddLike();
+          }}
+        >
+          ❤️
+        </button>
+        <p>{this.state.post.like}</p>
+        <CommentList />
       </>
     );
   }

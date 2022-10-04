@@ -16,7 +16,9 @@ class CommentList extends Component {
     // e.preventDefault();
     fetch(
       process.env.REACT_APP_BACKEND_URL +
-        "/networgram/post/post_id/comment")
+        "/networgram/post/" +
+        localStorage.getItem("post_id") + "/comment"
+        )
         .then((res) => {
           if (res.status === 200) {
             return res.json();
@@ -25,7 +27,7 @@ class CommentList extends Component {
           }
         })
         .then((data) => {
-          console.log("post data", data.post);
+          console.log("comment data", data.comment);
           this.setState({ comment: data.comment });
         });
     };
@@ -37,7 +39,7 @@ class CommentList extends Component {
         {this.state.comment.map((comment, index) => {
           return (
             <div key={comment._id}>
-              <p>{comment.content}</p>
+              <p>{comment.name}: {comment.content}</p>
             </div>
           )}
         )}

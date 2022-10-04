@@ -78,7 +78,7 @@ class PostList extends Component {
             return (
               <div key={post._id}>
                 <p className='name'>
-                {localStorage.getItem('id')}
+                {localStorage.getItem('name')}
                 </p>
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}> {post.title}
