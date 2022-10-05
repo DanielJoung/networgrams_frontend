@@ -9,6 +9,7 @@ import Header from "./Header";
 import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
+import CancelButton from "../ui/CancelButton";
 
 let baseURL = "";
 
@@ -89,8 +90,10 @@ class PostList extends Component {
                   </a>
                 </p>
                 {/* <UpdatePost handleAddPost={this.handleAddPost} /> */}
-                <EditPage />
-                <DeletePost deletePost={this.deletePost} postId={post._id} />
+                <div className="buttons">
+                  <EditPage />
+                  <DeletePost deletePost={this.deletePost} postId={post._id} />
+                </div>
               </div>
             );
           })}
