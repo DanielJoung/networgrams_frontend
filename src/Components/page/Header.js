@@ -9,9 +9,10 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
-      id: "",
+      id: localStorage.getItem("id"),
     };
   }
+
   render() {
     return (
       <>
@@ -29,7 +30,7 @@ class Header extends Component {
             <div className="navbar-item">
               <div className="buttons">
                 {localStorage.getItem("id") ? (
-                  <Welcome id={localStorage.getItem("id")} />
+                  <Welcome id={this.state.id} />
                 ) : (
                   ""
                 )}

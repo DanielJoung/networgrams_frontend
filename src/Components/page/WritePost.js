@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./Header";
 
 class WritePost extends Component {
   constructor(props) {
@@ -42,9 +43,15 @@ class WritePost extends Component {
       .catch((error) => console.error({ Error: error }));
   };
 
+  handleClick = () => {
+    window.location = "/";
+  };
+
   render() {
     return (
       <>
+        <Header />
+        <h1 id="log-reg-h1">Post page</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
@@ -73,7 +80,12 @@ class WritePost extends Component {
             ></textarea>
           </div>
 
-          <input class="button is-success" type="submit" value="Submit"></input>
+          <input
+            class="button is-success"
+            type="submit"
+            value="Submit"
+            onClick={this.handleClick}
+          ></input>
         </form>
       </>
     );

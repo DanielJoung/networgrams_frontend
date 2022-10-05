@@ -9,21 +9,22 @@ if (process.env.NODE_ENV === "development") {
 }
 
 class DeletePost extends Component {
-    constructor(props) {
-      super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-            return (
-            <>
-                <button
-                    className="button is-small is-danger"
-                    onClick={() => this.props.deletePost(this.props.postId)}
-                    >
-                    Delete
-                </button>
-            </>
-    )}
+  render() {
+    return (
+      <>
+        <button
+          className="button is-small is-danger"
+          onClick={() => this.props.deletePost(this.props.postId)}
+        >
+          Delete
+        </button>
+      </>
+    );
+  }
 }
 
-export default DeletePost
+export default DeletePost;

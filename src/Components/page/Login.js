@@ -36,7 +36,7 @@ class Login extends Component {
       }
     );
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
 
     if (data.message || data.error) {
       return this.setState({
@@ -48,9 +48,9 @@ class Login extends Component {
       localStorage.setItem("name", data.foundUser.name);
       localStorage.setItem("password", data.foundUser.password);
       localStorage.setItem("user_id", data.foundUser._id);
-      console.log(data.foundUser);
+      // localStorage.setItem("post", data.foundUser.post);
+      // console.log(data.foundUser);
     }
-    // console.log(localStorage.getItem("id"));
   };
 
   render() {

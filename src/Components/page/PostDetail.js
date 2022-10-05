@@ -3,6 +3,7 @@ import Header from "./Header";
 import CommentList from "./CommentList";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
+import UpdatePost from "./UpdatePost";
 
 class PostDetail extends Component {
   constructor() {
@@ -31,11 +32,11 @@ class PostDetail extends Component {
         }
       })
       .then((data) => {
-        // console.log("post data", data.showPost);
+        console.log("post data", data);
         this.setState({
           post: data.showPost,
         });
-        // console.log("statePost", this.state.post);
+        console.log("statePost", this.state.post);
       });
   };
 
@@ -54,7 +55,7 @@ class PostDetail extends Component {
     )
       .then((res) => res.json())
       .then((resJson) => {
-        console.log("resJson", resJson);
+        // console.log("resJson", resJson);
         const copyPost = this.state.post;
         copyPost.like = resJson.like;
         this.setState({ post: copyPost });
@@ -62,10 +63,37 @@ class PostDetail extends Component {
       });
   };
 
+  editPost = (id) => {
+    fetch(
+      process.env.REACT_APP_BACKEND_URL +
+        "/networgram/post/" +
+        localStorage.getItem("post_id"),
+      {
+        method: "PUT",
+
+        body: JSON.stringify({
+          title: "",
+          content: "",
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((resJson) => {
+        const findIndex = this.state.post.findIndex((post) => post._id === id);
+        const copyPost = this.state.post;
+        copyPost.title = resJson.title;
+        copyPost[findIndex].content = resJson.content;
+        console.log("copypost", copyPost);
+        // console.log('title', title)
+        // console.log('content', content)
+        this.setState({ post: copyPost });
+      });
+  };
+
   render() {
     return (
       <>
-        {/* <Header /> */}
+        <Header />
         <h1>Post Detail</h1>
 
         <p className="box">{this.state.post.content}</p>
@@ -77,6 +105,8 @@ class PostDetail extends Component {
           ❤️
         </button>
         <p>{this.state.post.like}</p>
+
+        {/* <UpdatePost editPost={this.editPost} /> */}
         <CommentList />
       </>
     );
