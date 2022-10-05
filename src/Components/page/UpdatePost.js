@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./Header";
 
 let baseURL = "";
 
@@ -57,6 +58,8 @@ class UpdatePost extends Component {
   render() {
     return (
       <>
+        <Header />
+        <h1 id="log-reg-h1">Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input

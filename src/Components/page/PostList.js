@@ -6,6 +6,7 @@ import Header from "./Header";
 // import PostDetail from "./PostDetail";
 import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
+import EditPage from "../ui/EditPage";
 
 let baseURL = "";
 
@@ -39,7 +40,7 @@ class PostList extends Component {
       })
       .then((data) => {
         console.log("post data", data.post);
-        console.log(data.post.name);
+        // console.log(data.post.name);
         this.setState({ post: data.post });
       });
   };
@@ -73,7 +74,7 @@ class PostList extends Component {
   render() {
     return (
       <>
-        <Header />
+        {/* <Header /> */}
         <div>
           {this.state.post.map((post, index) => {
             return (
@@ -85,14 +86,15 @@ class PostList extends Component {
                     {post.title}
                   </a>
                 </p>
-                <UpdatePost handleAddPost={this.handleAddPost} />
+                {/* <UpdatePost handleAddPost={this.handleAddPost} /> */}
+                <EditPage />
                 <DeletePost deletePost={this.deletePost} postId={post._id} />
               </div>
             );
           })}
         </div>
         {/* <button>Write a new post</button> */}
-        <WritePost handleAddPost={this.handleAddPost} />
+        {/* <WritePost handleAddPost={this.handleAddPost} /> */}
       </>
     );
   }

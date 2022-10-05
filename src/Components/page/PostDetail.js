@@ -93,7 +93,7 @@ class PostDetail extends Component {
   render() {
     return (
       <>
-        {/* <Header /> */}
+        <Header />
         <h1>Post Detail</h1>
 
         <p className="box">{this.state.post.content}</p>
