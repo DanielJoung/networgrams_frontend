@@ -87,7 +87,6 @@ class PostList extends Component {
                     {post.title}
                   </a>
                 </p>
-                {/* <UpdatePost handleAddPost={this.handleAddPost} /> */}
                 <div className="buttons">
                   <EditPage />
                   <DeletePost deletePost={this.deletePost} postId={post._id} />
@@ -96,8 +95,6 @@ class PostList extends Component {
             );
           })}
         </div>
-        {/* <button>Write a new post</button> */}
-        {/* <WritePost handleAddPost={this.handleAddPost} /> */}
       </>
     );
   }

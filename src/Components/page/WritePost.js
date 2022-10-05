@@ -33,7 +33,6 @@ class WritePost extends Component {
       .then((res) => res.json())
       .then((resJson) => {
         console.log("NewForm - resJson", resJson);
-        this.props.handleAddPost(resJson);
         this.setState({
           name: "",
           title: "",

@@ -20,7 +20,7 @@ class UpdatePost extends Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.id]: event.target.vlaue,
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -45,7 +45,6 @@ class UpdatePost extends Component {
       .then((res) => res.json())
       .then((resJson) => {
         console.log("NewForm - resJson", resJson);
-        this.props.handleAddPost(resJson);
         this.setState({
           name: "",
           title: resJson,
@@ -53,6 +52,10 @@ class UpdatePost extends Component {
         });
       })
       .catch((error) => console.error({ Error: error }));
+  };
+
+  handleClick = () => {
+    window.location = "/";
   };
 
   render() {
@@ -89,6 +92,7 @@ class UpdatePost extends Component {
           </div>
 
           <input
+           onClick={this.handleClick}
             className="button is-small  is-success"
             type="submit"
             value="Edit"
