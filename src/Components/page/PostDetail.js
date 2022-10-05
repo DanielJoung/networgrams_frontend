@@ -78,7 +78,6 @@ class PostDetail extends Component {
         </button>
         <p>{this.state.post.like}</p>
         <CommentList />
-
       </>
     );
   }
