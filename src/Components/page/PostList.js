@@ -1,3 +1,5 @@
+
+
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 // import CommentList from './CommentList';
@@ -5,7 +7,8 @@ import WritePost from "./WritePost";
 import Header from "./Header";
 // import PostDetail from "./PostDetail";
 import UpdatePost from "./UpdatePost";
-import DeletePost from './DeletePost'
+import DeletePost from "./DeletePost";
+import EditPage from "../ui/EditPage";
 
 let baseURL = "";
 
@@ -39,7 +42,7 @@ class PostList extends Component {
       })
       .then((data) => {
         console.log("post data", data.post);
-        console.log(data.post.name);
+        // console.log(data.post.name);
         this.setState({ post: data.post });
       });
   };
@@ -73,28 +76,27 @@ class PostList extends Component {
   render() {
     return (
       <>
-        <Header />
+        {/* <Header /> */}
         <div>
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className='name'>
-                {localStorage.getItem('name')}
-                </p>
+                <p className="name">{localStorage.getItem("name")}</p>
 
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}>
                     {post.title}
                   </a>
                 </p>
-                <UpdatePost handleAddPost={this.handleAddPost}  />
-                <DeletePost deletePost={this.deletePost} postId={post._id}/>
+                {/* <UpdatePost handleAddPost={this.handleAddPost} /> */}
+                <EditPage />
+                <DeletePost deletePost={this.deletePost} postId={post._id} />
               </div>
             );
           })}
         </div>
         {/* <button>Write a new post</button> */}
-        <WritePost handleAddPost={this.handleAddPost} />
+        {/* <WritePost handleAddPost={this.handleAddPost} /> */}
       </>
     );
   }
