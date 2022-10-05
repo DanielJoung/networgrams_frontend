@@ -4,7 +4,12 @@ import { Routes, Route } from "react-router-dom";
 import WritePost from "./WritePost";
 import Header from "./Header";
 import PostDetail from "./PostDetail";
-// import CreateComment from './CreateComment'
+// import UpdatePost from "./UpdatePost";
+import DeletePost from './DeletePost'
+
+
+
+let baseURL = "";
 
 if (process.env.NODE_ENV === "development") {
   baseURL = "http://localhost:3003";
@@ -56,6 +61,19 @@ class PostList extends Component {
     window.location = `/post/${id}`;
   };
 
+  editPost = (id) => {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + 
+    localStorage.getItem("post_id"), {
+      method: "PUT",
+    }).then((response) => {
+      const findIndex = this.state.post.findIndex((post) => post._id === id);
+      const copyPost = [...this.state.post];
+      console.log('copypost', copyPost)
+      // copyPost.splice(findIndex, 1);
+      // this.setState({ post: copyPost });
+    });
+  }
+
   deletePost = (id) => {
     fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
       method: "DELETE",
@@ -75,22 +93,24 @@ class PostList extends Component {
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-
                 <p className='name'>
-                {localStorage.getItem('id')}
+                {localStorage.getItem('name')}
                 </p>
+
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}>
-                    {" "}
                     {post.title}
                   </a>
                 </p>
+                {/* <UpdatePost/> */}
                 <button
-                  class="button is-small is-danger"
-                  onClick={() => this.deletePost(post._id)}
-                >
-                  Delete
+                  className="button is-small is-primary"
+                  onClick={() => this.editPost(post._id)}
+                  >
+                  Edit
                 </button>
+
+                <DeletePost deletePost={this.deletePost} postId={post._id}/>
               </div>
             );
           })}
