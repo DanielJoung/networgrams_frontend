@@ -6,7 +6,10 @@ import Header from "./Components/page/Header";
 import Register from "./Components/page/Register";
 import Login from "./Components/page/Login";
 import "./App.css";
+// import EditPage from "./Components/ui/EditPage";
+import UpdatePost from "./Components/page/UpdatePost";
 
+const post_id = localStorage.getItem("post_id");
 class App extends Component {
   constructor() {
     super();
@@ -22,6 +25,7 @@ class App extends Component {
             <Route path="/user/signin" element={<Login />} />
             <Route path="/post" element={<PostList />} />
             <Route path="/post/:id" element={<PostDetail />} />
+            <Route pate="/post/edit/:id" element={<UpdatePost />} />
           </Routes>
         </Router>
       </>

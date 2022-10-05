@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import WritePost from "./WritePost";
 import Header from "./Header";
 // import PostDetail from "./PostDetail";
-import UpdatePost from "./UpdatePost";
+
 import DeletePost from "./DeletePost";
 
 let baseURL = "";
@@ -59,34 +59,6 @@ class PostList extends Component {
     window.location = `/post/${id}`;
   };
 
-  editPost = (id) => {
-    fetch(
-      process.env.REACT_APP_BACKEND_URL +
-        "/networgram/post/" +
-        localStorage.getItem("post_id"),
-      {
-        method: "PUT",
-
-        body: JSON.stringify({
-          title: "",
-          content: "",
-        }),
-      }
-    )
-      .then((res) => res.json())
-      .then((resJson) => {
-        const findIndex = this.state.post.findIndex((post) => post._id === id);
-        const copyPost = [...this.state.post];
-
-        copyPost[findIndex].title = resJson.title;
-        copyPost[findIndex].content = resJson.content;
-        console.log("copypost", copyPost);
-        // console.log('title', title)
-        // console.log('content', content)
-        this.setState({ post: copyPost });
-      });
-  };
-
   deletePost = (id) => {
     fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
       method: "DELETE",
@@ -113,7 +85,7 @@ class PostList extends Component {
                     {post.title}
                   </a>
                 </p>
-                <UpdatePost editPost={this.editPost} />
+
                 <DeletePost deletePost={this.deletePost} postId={post._id} />
               </div>
             );
