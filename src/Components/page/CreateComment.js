@@ -29,7 +29,7 @@ class CreateComment extends Component {
         }).then (res => res.json())
           .then (resJson => {
             console.log('NewForm - resJson', resJson)
-            this.props.handleAddComment(resJson)
+            this.state.handleAddComment(resJson)
             this.setState({
                     name: '',
                     content: ''

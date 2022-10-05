@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CreateComment from './CreateComment';
 
 class CommentList extends Component {
   constructor() {
@@ -32,6 +33,17 @@ class CommentList extends Component {
         });
     };
 
+    deleteComment = (id) => {
+      fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/:id/comment" + id, {
+        method: "DELETE",
+      }).then((response) => {
+        const findIndex = this.state.comment.findIndex((comment) => comment._id === id);
+        const copyComment = [...this.state.comment];
+        copyComment.splice(findIndex, 1);
+        this.setState({ comment: copyComment });
+      });
+    };
+
 
     render() {
       return(
@@ -40,9 +52,16 @@ class CommentList extends Component {
           return (
             <div key={comment._id}>
               <p>{comment.name}: {comment.content}</p>
-            </div>
+              <button
+                className="button is-small is-danger"
+                onClick={() => this.deleteComment(comment._id)}
+                >
+                X
+              </button>
+        </div>
           )}
         )}
+        <CreateComment />
       </div>
     )}
   
