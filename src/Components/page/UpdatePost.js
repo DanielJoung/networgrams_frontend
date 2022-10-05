@@ -19,14 +19,37 @@ class UpdatePost extends Component {
 
     handleChange = (event) => {
         this.setState({
-            [event.target.id]:event.target.id
+            [event.target.id]:event.target.vlaue
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const post = this.state
-    }
+        fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + 
+        localStorage.getItem("post_id"), {
+          method: "PUT",
+          body: JSON.stringify({
+            name: this.state.name,
+            title: this.state.title,
+            content: this.state.content,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((resJson) => {
+            console.log("NewForm - resJson", resJson);
+            this.props.handleAddPost(resJson);
+            this.setState({
+              name: "",
+              title: "",
+              content: "",
+            });
+          })
+          .catch((error) => console.error({ Error: error }));
+      };
+    
 
     render() {
         return (
@@ -40,7 +63,7 @@ class UpdatePost extends Component {
                   name="title"
                   onChange={this.handleChange}
                   value={this.state.title}
-                  placeholder="add a title"
+                  placeholder="Edit a title"
                   required
                 />
               </div>
@@ -59,7 +82,7 @@ class UpdatePost extends Component {
                 ></textarea>
               </div>
     
-              <input class="button is-success" type="submit" value="Edit"></input>
+              <input className="button is-small  is-success" type="submit" value="Edit"></input>
             </form>
           </>
         );
