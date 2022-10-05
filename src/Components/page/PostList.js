@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 // import CommentList from './CommentList';
@@ -88,15 +86,12 @@ class PostList extends Component {
                     {post.title}
                   </a>
                 </p>
-                {/* <UpdatePost handleAddPost={this.handleAddPost} /> */}
                 <EditPage />
                 <DeletePost deletePost={this.deletePost} postId={post._id} />
               </div>
             );
           })}
         </div>
-        {/* <button>Write a new post</button> */}
-        {/* <WritePost handleAddPost={this.handleAddPost} /> */}
       </>
     );
   }
