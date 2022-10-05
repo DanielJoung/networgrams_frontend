@@ -22,7 +22,7 @@ class WritePost extends Component {
     fetch("http://localhost:3003/networgram/post", {
       method: "POST",
       body: JSON.stringify({
-        name: this.state.name,
+        name: localStorage.getItem("id"),
         title: this.state.title,
         content: this.state.content,
       }),

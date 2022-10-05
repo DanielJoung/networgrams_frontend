@@ -1,5 +1,3 @@
-
-
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
 // import CommentList from './CommentList';
@@ -82,7 +80,7 @@ class PostList extends Component {
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className="name">{localStorage.getItem("name")}</p>
+                <p className="name">{post.name}</p>
 
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}>
