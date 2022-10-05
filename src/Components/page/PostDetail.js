@@ -107,7 +107,7 @@ class PostDetail extends Component {
         <p>{this.state.post.like}</p>
 
         {/* <UpdatePost editPost={this.editPost} /> */}
-        <CommentList />
+        {/* <CommentList /> */}
       </>
     );
   }

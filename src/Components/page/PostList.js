@@ -7,6 +7,7 @@ import Header from "./Header";
 import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
+import CancelButton from "../ui/CancelButton";
 
 let baseURL = "";
 
@@ -79,15 +80,17 @@ class PostList extends Component {
           {this.state.post.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className="name">{localStorage.getItem("name")}</p>
+                <p className="name">{post.name}</p>
 
                 <p class="box">
                   <a onClick={() => this.handleMovePage(post._id)}>
                     {post.title}
                   </a>
                 </p>
-                <EditPage />
-                <DeletePost deletePost={this.deletePost} postId={post._id} />
+                <div className="buttons">
+                  <EditPage />
+                  <DeletePost deletePost={this.deletePost} postId={post._id} />
+                </div>
               </div>
             );
           })}
