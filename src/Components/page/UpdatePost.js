@@ -31,7 +31,7 @@ class UpdatePost extends Component {
         "/networgram/post/" +
         localStorage.getItem("post_id"),
       {
-        method: "PUT",
+        method: "GET",
         body: JSON.stringify({
           name: this.state.name,
           title: this.state.title,
@@ -48,7 +48,7 @@ class UpdatePost extends Component {
         this.props.handleAddPost(resJson);
         this.setState({
           name: "",
-          title: "",
+          title: resJson,
           content: "",
         });
       })

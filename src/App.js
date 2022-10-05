@@ -27,7 +27,7 @@ class App extends Component {
               element={
                 <>
                   <Header />
-                  <PostList />
+                  {!localStorage.getItem("id") ? "" : <PostList />}
                 </>
               }
             />
