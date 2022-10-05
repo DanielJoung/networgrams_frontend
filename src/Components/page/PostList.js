@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import WritePost from "./WritePost";
 import Header from "./Header";
 // import PostDetail from "./PostDetail";
-
+import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 
 let baseURL = "";
@@ -85,7 +85,7 @@ class PostList extends Component {
                     {post.title}
                   </a>
                 </p>
-
+                <UpdatePost handleAddPost={this.handleAddPost} />
                 <DeletePost deletePost={this.deletePost} postId={post._id} />
               </div>
             );

@@ -12,65 +12,52 @@ class UpdatePost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: [],
+      title: this.props.title,
+      content: this.props.content,
     };
   }
 
-  componentDidMount() {
-    this.getPost();
-  }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.vlaue,
+    });
+  };
 
-  componentDidMount() {
-    this.getPost();
-  }
-
-  getPost = () => {
-    // e.preventDefault();
+  handleSubmit = (event) => {
+    event.preventDefault();
     fetch(
       process.env.REACT_APP_BACKEND_URL +
-        `/networgram/post/${localStorage.getItem("post_id")}/edit`,
+        "/networgram/post/" +
+        localStorage.getItem("post_id"),
       {
-        method: "GET",
+        method: "PUT",
         body: JSON.stringify({
-          title: this.state.post.title,
-          content: this.state.post.content,
+          name: this.state.name,
+          title: this.state.title,
+          content: this.state.content,
         }),
         headers: {
           "Content-Type": "application/json",
         },
       }
     )
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          return [];
-        }
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log("NewForm - resJson", resJson);
+        this.props.handleAddPost(resJson);
+        this.setState({
+          name: "",
+          title: "",
+          content: "",
+        });
       })
-      .then((data) => {
-        console.log("post data", data.editPost);
-        // console.log(data.post.name);
-        this.setState({ post: data.editPost });
-      });
+      .catch((error) => console.error({ Error: error }));
   };
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const post = this.state;
-  // };
 
   render() {
     return (
       <>
-        <h1> edit page</h1>
-        {/* <h1>{this.state.id}</h1> */}
-        {/* <form>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <input
               className="input is-info"
@@ -78,8 +65,8 @@ class UpdatePost extends Component {
               id="title"
               name="title"
               onChange={this.handleChange}
-              value={this.state.post.title}
-              placeholder="add a title"
+              value={this.state.title}
+              placeholder="Edit a title"
               required
             />
           </div>
@@ -92,14 +79,18 @@ class UpdatePost extends Component {
               name="content"
               rows="10"
               onChange={this.handleChange}
-              value={this.state.post.content}
+              value={this.state.content}
               placeholder="Edit a post"
               required
             ></textarea>
           </div>
 
-          <input class="button is-success" type="submit" value="Edit"></input>
-        </form> */}
+          <input
+            className="button is-small  is-success"
+            type="submit"
+            value="Edit"
+          ></input>
+        </form>
       </>
     );
   }

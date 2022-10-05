@@ -4,7 +4,6 @@ import CommentList from "./CommentList";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
 import UpdatePost from "./UpdatePost";
-import EditPage from "../ui/EditPage";
 
 class PostDetail extends Component {
   constructor() {
@@ -59,7 +58,7 @@ class PostDetail extends Component {
         // console.log("resJson", resJson);
         const copyPost = this.state.post;
         copyPost.like = resJson.like;
-        // this.setState({ post: copyPost });
+        this.setState({ post: copyPost });
         // console.log("addlikePost", this.state.post);
       });
   };
@@ -106,7 +105,7 @@ class PostDetail extends Component {
           ❤️
         </button>
         <p>{this.state.post.like}</p>
-        <EditPage />
+
         {/* <UpdatePost editPost={this.editPost} /> */}
         <CommentList />
       </>
