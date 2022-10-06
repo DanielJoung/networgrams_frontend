@@ -5,7 +5,7 @@ function EditPage() {
     window.location = `/post/edit/${localStorage.getItem("post_id")}`;
   };
   return (
-    <button className="button is-small" onClick={() => handleEdit()}>
+    <button className="button is-small is-warning" onClick={() => handleEdit()}>
       Edit
     </button>
   );

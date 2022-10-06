@@ -31,9 +31,9 @@ class UpdatePost extends Component {
         "/networgram/post/" +
         localStorage.getItem("post_id"),
       {
-        method: "GET",
+        method: "PUT",
         body: JSON.stringify({
-          name: this.state.name,
+          name: localStorage.getItem('id'),
           title: this.state.title,
           content: this.state.content,
         }),
@@ -64,7 +64,7 @@ class UpdatePost extends Component {
         <Header />
         <h1 id="log-reg-h1">Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div >
             <input
               className="input is-info"
               type="text"
@@ -95,7 +95,7 @@ class UpdatePost extends Component {
            onClick={this.handleClick}
             className="button is-small  is-success"
             type="submit"
-            value="Edit"
+            value="Submit"
           ></input>
         </form>
       </>

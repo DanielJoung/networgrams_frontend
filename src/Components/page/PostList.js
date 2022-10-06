@@ -76,13 +76,13 @@ class PostList extends Component {
     return (
       <>
         {/* <Header /> */}
-        <div>
+        <div className="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd">
           {this.state.post.map((post, index) => {
             return (
-              <div key={post._id}>
-                <p className="name">{post.name}</p>
+              <div className="message is-info column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd"  key={post._id}>
+                <p className="message-header">{post.name}</p>
 
-                <p class="box">
+                <p className="m-3">
                   <a onClick={() => this.handleMovePage(post._id)}>
                     {post.title}
                   </a>
