@@ -4,6 +4,7 @@ import LoginPage from "../ui/LoginPage";
 import LogoutButton from "../ui/LogoutButton";
 import PostPage from "../ui/PostPage";
 import Welcome from "../ui/Welcome";
+import WithRouter from "./WithRouter";
 
 class Header extends Component {
   constructor() {
@@ -22,9 +23,13 @@ class Header extends Component {
           aria-label="main navigation"
         >
           <div className="navbar-brand">
-            <a className="navbar-item" href="/" id="header-title">
+            <button
+              className="navbar-item"
+              onClick={() => this.props.navigate("/")}
+              id="header-title"
+            >
               Networgram
-            </a>
+            </button>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
@@ -49,4 +54,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default WithRouter(Header);

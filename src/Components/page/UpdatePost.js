@@ -1,58 +1,41 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import WithRouter from "./WithRouter";
 
 let baseURL = "";
-
 if (process.env.NODE_ENV === "development") {
   baseURL = "http://localhost:3003";
 } else {
   baseURL = process.env.REACT_APP_BACKEND_URL;
 }
-
 class UpdatePost extends Component {
   constructor(props) {
     super(props);
+    const post = this.props.posts.find((post) => {
+      return post._id === this.props.currentPostId;
+    });
+    console.log(post);
     this.state = {
-      title: this.props.title,
-      content: this.props.content,
+      title: post.title,
+      content: post.content,
     };
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.vlaue,
-    });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const body = {
+      name: localStorage.getItem("id"),
+      title: this.state.title,
+      content: this.state.content,
+    };
+    this.props.updatePost(body);
+    this.props.navigate("/");
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(
-      process.env.REACT_APP_BACKEND_URL +
-        "/networgram/post/" +
-        localStorage.getItem("post_id"),
-      {
-        method: "GET",
-        body: JSON.stringify({
-          name: this.state.name,
-          title: this.state.title,
-          content: this.state.content,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((resJson) => {
-        console.log("NewForm - resJson", resJson);
-        this.props.handleAddPost(resJson);
-        this.setState({
-          name: "",
-          title: resJson,
-          content: "",
-        });
-      })
-      .catch((error) => console.error({ Error: error }));
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value,
+    });
   };
 
   render() {
@@ -73,7 +56,6 @@ class UpdatePost extends Component {
               required
             />
           </div>
-
           <div>
             <textarea
               className="textarea"
@@ -87,7 +69,6 @@ class UpdatePost extends Component {
               required
             ></textarea>
           </div>
-
           <input
             className="button is-small  is-success"
             type="submit"
@@ -98,5 +79,4 @@ class UpdatePost extends Component {
     );
   }
 }
-
-export default UpdatePost;
+export default WithRouter(UpdatePost);

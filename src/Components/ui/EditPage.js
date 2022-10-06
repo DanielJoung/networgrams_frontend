@@ -1,8 +1,12 @@
 import React from "react";
+import WithRouter from "../page/WithRouter";
 
-function EditPage() {
+function EditPage(props) {
   const handleEdit = () => {
-    window.location = `/post/edit/${localStorage.getItem("post_id")}`;
+    console.log(props.post);
+    // window.location = `/post/edit/${localStorage.getItem("post_id")}`;
+    props.setPostId(props.post._id);
+    props.navigate("/post/edit/" + props.post._id);
   };
   return (
     <button className="button is-small" onClick={() => handleEdit()}>
@@ -11,4 +15,4 @@ function EditPage() {
   );
 }
 
-export default EditPage;
+export default WithRouter(EditPage);
