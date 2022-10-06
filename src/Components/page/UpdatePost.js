@@ -21,7 +21,6 @@ class UpdatePost extends Component {
     };
   }
 
-<<<<<<< HEAD
   handleSubmit = (e) => {
     e.preventDefault();
     const body = {
@@ -37,47 +36,11 @@ class UpdatePost extends Component {
     this.setState({
       [event.target.id]: event.target.value,
     });
-=======
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value,
-    });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(
-      process.env.REACT_APP_BACKEND_URL +
-        "/networgram/post/" +
-        localStorage.getItem("post_id"),
-      {
-        method: "GET",
-        body: JSON.stringify({
-          name: this.state.name,
-          title: this.state.title,
-          content: this.state.content,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((resJson) => {
-        console.log("NewForm - resJson", resJson);
-        this.setState({
-          name: "",
-          title: resJson,
-          content: "",
-        });
-      })
-      .catch((error) => console.error({ Error: error }));
->>>>>>> 2c793a7b79f9cc695d2daa6163f66b8b08b09a3c
-  };
-
-  handleClick = () => {
-    window.location = "/";
-  };
+  // handleClick = () => {
+  //   window.location = "/";
+  // };
 
   render() {
     return (
@@ -111,7 +74,7 @@ class UpdatePost extends Component {
             ></textarea>
           </div>
           <input
-           onClick={this.handleClick}
+            onClick={this.handleClick}
             className="button is-small  is-success"
             type="submit"
             value="Edit"

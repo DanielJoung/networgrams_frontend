@@ -46,11 +46,6 @@ class WritePost extends Component {
       .catch((error) => console.error({ Error: error }));
   };
 
-  handleClick = () => {
-    // window.location = "/";
-    // this.props.navigate("/");
-  };
-
   render() {
     return (
       <>
