@@ -38,39 +38,9 @@ class UpdatePost extends Component {
     });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    fetch(
-      process.env.REACT_APP_BACKEND_URL +
-        "/networgram/post/" +
-        localStorage.getItem("post_id"),
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          name: localStorage.getItem('id'),
-          title: this.state.title,
-          content: this.state.content,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((resJson) => {
-        console.log("NewForm - resJson", resJson);
-        this.setState({
-          name: "",
-          title: resJson,
-          content: "",
-        });
-      })
-      .catch((error) => console.error({ Error: error }));
-  };
-
-  handleClick = () => {
-    window.location = "/";
-  };
+  // handleClick = () => {
+  //   window.location = "/";
+  // };
 
   render() {
     return (
@@ -78,7 +48,7 @@ class UpdatePost extends Component {
         <Header />
         <h1 id="log-reg-h1">Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
-          <div >
+          <div>
             <input
               className="input is-info"
               type="text"
@@ -107,7 +77,7 @@ class UpdatePost extends Component {
             onClick={this.handleClick}
             className="button is-small  is-success"
             type="submit"
-            value="Submit"
+            value="Edit"
           ></input>
         </form>
       </>
