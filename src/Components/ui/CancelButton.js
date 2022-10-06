@@ -1,9 +1,10 @@
 import React from "react";
+import WithRouter from "../page/WithRouter";
 
 function CancelButton() {
   const handleCancel = (e) => {
     e.preventDefault();
-    window.location = "/";
+    this.props.navigate("/");
   };
 
   return (
@@ -16,4 +17,4 @@ function CancelButton() {
   );
 }
 
-export default CancelButton;
+export default WithRouter(CancelButton);

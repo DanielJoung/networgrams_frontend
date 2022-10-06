@@ -3,6 +3,7 @@ import LoginButton from "../ui/LoginButton";
 import CancelButton from "../ui/CancelButton";
 import Header from "./Header";
 import "bulma/css/bulma.min.css";
+import WithRouter from "./WithRouter";
 
 class Login extends Component {
   constructor(props) {
@@ -43,13 +44,14 @@ class Login extends Component {
         error: "Invalid ID or Password",
       });
     } else {
-      window.location = "/";
       localStorage.setItem("id", data.foundUser.id);
       localStorage.setItem("name", data.foundUser.name);
       localStorage.setItem("password", data.foundUser.password);
       localStorage.setItem("user_id", data.foundUser._id);
       // localStorage.setItem("post", data.foundUser.post);
       // console.log(data.foundUser);
+      this.props.getPost();
+      this.props.navigate("/");
     }
   };
 
@@ -99,4 +101,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default WithRouter(Login);

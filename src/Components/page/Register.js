@@ -3,6 +3,7 @@ import RegisterButton from "../ui/RegisterButton";
 import CancelButton from "../ui/CancelButton";
 import Header from "./Header";
 import "bulma/css/bulma.min.css";
+import WithRouter from "./WithRouter";
 
 class Register extends Component {
   constructor(props) {
@@ -46,7 +47,8 @@ class Register extends Component {
     ) {
       return this.setState({ error: "ID is already taken" });
     } else {
-      window.location = "/user/signin";
+      // window.location = "/user/signin";
+      this.props.navigate("/user/signin");
     }
 
     // console.log(data);
@@ -113,4 +115,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default WithRouter(Register);

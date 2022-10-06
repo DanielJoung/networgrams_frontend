@@ -1,28 +1,30 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import CommentList from "./CommentList";
+import WithRouter from "./WithRouter";
 import CreateComment from "./CreateComment";
 import PostList from "./PostList";
 import UpdatePost from "./UpdatePost";
 
 class PostDetail extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      post: [],
+      post: {},
     };
   }
 
   componentDidMount() {
+    // console.log(this.props);
     this.getPost();
   }
 
   getPost = () => {
-    // e.preventDefault();
+    console.log(this.props.currentPostId, "currentPostId");
     fetch(
       process.env.REACT_APP_BACKEND_URL +
         "/networgram/post/" +
-        localStorage.getItem("post_id")
+        this.props.currentPostId
     )
       .then((res) => {
         if (res.status === 200) {
@@ -44,7 +46,7 @@ class PostDetail extends Component {
     fetch(
       process.env.REACT_APP_BACKEND_URL +
         "/networgram/post/" +
-        localStorage.getItem("post_id"),
+        this.props.currentPostId,
       {
         method: "PUT",
         body: JSON.stringify({ like: +this.state.post.like + 1 }),
@@ -91,6 +93,7 @@ class PostDetail extends Component {
   };
 
   render() {
+    // console.log(this.props.currentPostId, "currentPostId");
     return (
       <>
         <Header />
@@ -107,10 +110,10 @@ class PostDetail extends Component {
         <p>{this.state.post.like}</p>
 
         {/* <UpdatePost editPost={this.editPost} /> */}
-        {/* <CommentList /> */}
+        <CommentList post={this.state.post} />
       </>
     );
   }
 }
 
-export default PostDetail;
+export default WithRouter(PostDetail);

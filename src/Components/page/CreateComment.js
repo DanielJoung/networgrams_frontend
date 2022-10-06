@@ -4,8 +4,7 @@ class CreateComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      content: "",
+      post: [],
     };
   }
 
@@ -17,23 +16,26 @@ class CreateComment extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3003/networgram/post/:id/comment", {
-      method: "POST",
-      body: JSON.stringify({
-        name: this.state.name,
-        content: this.state.content,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `http://localhost:3003/networgram/post/${localStorage.getItem(
+        "post_id"
+      )}/comment`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          post: this.props.post,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((resJson) => {
         console.log("NewForm - resJson", resJson);
-        this.state.handleAddComment(resJson);
+        // this.state.handleAddComment(resJson);
         this.setState({
-          name: "",
-          content: "",
+          post: [],
         });
       })
       .catch((error) => console.error({ Error: error }));

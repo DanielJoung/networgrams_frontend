@@ -1,22 +1,36 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import WithRouter from "./WithRouter";
 
 let baseURL = "";
-
 if (process.env.NODE_ENV === "development") {
   baseURL = "http://localhost:3003";
 } else {
   baseURL = process.env.REACT_APP_BACKEND_URL;
 }
-
 class UpdatePost extends Component {
   constructor(props) {
     super(props);
+    const post = this.props.posts.find((post) => {
+      return post._id === this.props.currentPostId;
+    });
+    console.log(post);
     this.state = {
-      title: this.props.title,
-      content: this.props.content,
+      title: post.title,
+      content: post.content,
     };
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const body = {
+      name: localStorage.getItem("id"),
+      title: this.state.title,
+      content: this.state.content,
+    };
+    this.props.updatePost(body);
+    this.props.navigate("/");
+  };
 
   handleChange = (event) => {
     this.setState({
@@ -76,7 +90,6 @@ class UpdatePost extends Component {
               required
             />
           </div>
-
           <div>
             <textarea
               className="textarea"
@@ -90,9 +103,8 @@ class UpdatePost extends Component {
               required
             ></textarea>
           </div>
-
           <input
-           onClick={this.handleClick}
+            onClick={this.handleClick}
             className="button is-small  is-success"
             type="submit"
             value="Submit"
@@ -102,5 +114,4 @@ class UpdatePost extends Component {
     );
   }
 }
-
-export default UpdatePost;
+export default WithRouter(UpdatePost);

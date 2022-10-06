@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
+import WithRouter from "./WithRouter";
 
 class WritePost extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class WritePost extends Component {
   };
 
   handleSubmit = (event) => {
+    console.log(event, "event");
     event.preventDefault();
     fetch("http://localhost:3003/networgram/post", {
       method: "POST",
@@ -33,17 +35,15 @@ class WritePost extends Component {
       .then((res) => res.json())
       .then((resJson) => {
         console.log("NewForm - resJson", resJson);
+        this.props.createPost(resJson);
         this.setState({
           name: "",
           title: "",
           content: "",
         });
+        this.props.navigate("/");
       })
       .catch((error) => console.error({ Error: error }));
-  };
-
-  handleClick = () => {
-    window.location = "/";
   };
 
   render() {
@@ -91,4 +91,4 @@ class WritePost extends Component {
   }
 }
 
-export default WritePost;
+export default WithRouter(WritePost);
