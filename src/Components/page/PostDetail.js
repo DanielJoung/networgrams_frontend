@@ -20,7 +20,7 @@ class PostDetail extends Component {
   }
 
   getPost = () => {
-    console.log(this.props.currentPostId, "currentPostId");
+    // console.log(this.props.currentPostId, "currentPostId");
     fetch(
       process.env.REACT_APP_BACKEND_URL +
         "/networgram/post/" +
@@ -34,11 +34,11 @@ class PostDetail extends Component {
         }
       })
       .then((data) => {
-        console.log("post data", data);
+        // console.log("post data", data);
         this.setState({
           post: data.showPost,
         });
-        console.log("statePost", this.state.post);
+        // console.log("statePost", this.state.post);
       });
   };
 
@@ -85,7 +85,7 @@ class PostDetail extends Component {
         const copyPost = this.state.post;
         copyPost.title = resJson.title;
         copyPost[findIndex].content = resJson.content;
-        console.log("copypost", copyPost);
+        // console.log("copypost", copyPost);
         // console.log('title', title)
         // console.log('content', content)
         this.setState({ post: copyPost });
@@ -99,15 +99,20 @@ class PostDetail extends Component {
         <Header />
         <h1>Post Detail</h1>
 
-        <p className="box">{this.state.post.content}</p>
-        <button
-          onClick={() => {
-            this.handleAddLike();
-          }}
-        >
-          ❤️
-        </button>
-        <p>{this.state.post.like}</p>
+        <p className="box">
+          {this.state.post.content}
+
+          <button
+            className="buttons is-small"
+            id="like-button"
+            onClick={() => {
+              this.handleAddLike();
+            }}
+          >
+            <span>{this.state.post.like}</span>
+            ❤️
+          </button>
+        </p>
 
         {/* <UpdatePost editPost={this.editPost} /> */}
         <CommentList post={this.state.post} />

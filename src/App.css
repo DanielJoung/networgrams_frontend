@@ -23,6 +23,9 @@
   margin: 10px 0 10px 10px;
   font-size: 30px;
   color: inherit;
+  border: 0;
+  background-color: white;
+  cursor: pointer;
 }
 
 #welcome_p {
@@ -33,6 +36,7 @@
   white-space: nowrap;
   overflow: auto;
 }
+
 
 /* form */
 #form {
@@ -49,4 +53,22 @@
 #reg-log-error {
   color: red;
   padding-left: 50px;
+}
+
+/* like-buttons */
+#like-button {
+  border: 0;
+  background-color: white;
+  float: right;
+  cursor: pointer;
+}
+
+/* post-list */
+#post-title {
+  color: black;
+  font-family:'Times New Roman', Times, serif
+}
+
+.post-name {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

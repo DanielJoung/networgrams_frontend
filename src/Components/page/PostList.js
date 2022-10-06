@@ -84,19 +84,31 @@ class PostList extends Component {
           {this.props?.posts?.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className="name">{post.name}</p>
-                <p>{post.date}</p>
-                <p class="box">
-                  <a onClick={() => this.handleMovePage(post._id)}>
+                <p className="post-name">{post.name}</p>
+
+                <div class="box">
+                  <a
+                    id="post-title"
+                    onClick={() => this.handleMovePage(post._id)}
+                  >
                     {post.title}
+                    <span>{post.date}</span>
                   </a>
-                </p>
-                <div className="buttons">
-                  <EditPage post={post} setPostId={this.props.setPostId} />
-                  <DeletePost
-                    deletePost={this.props.deletePost}
-                    postId={post._id}
-                  />
+                  <div className="buttons is-right">
+                    {localStorage.getItem("id") !== post.name ? (
+                      ""
+                    ) : (
+                      <EditPage post={post} setPostId={this.props.setPostId} />
+                    )}
+                    {localStorage.getItem("id") !== post.name ? (
+                      ""
+                    ) : (
+                      <DeletePost
+                        deletePost={this.props.deletePost}
+                        postId={post._id}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             );
