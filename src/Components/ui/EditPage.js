@@ -4,7 +4,6 @@ import WithRouter from "../page/WithRouter";
 function EditPage(props) {
   const handleEdit = () => {
     console.log(props.post);
-    // window.location = `/post/edit/${localStorage.getItem("post_id")}`;
     props.setPostId(props.post._id);
     props.navigate("/post/edit/" + props.post._id);
   };

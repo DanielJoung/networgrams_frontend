@@ -3,7 +3,7 @@ import React from "react";
 function RegisterButton() {
   return (
     <input
-      className="is-primary is-rounded button"
+      id="input-submit"
       type="Submit"
       value="Register"
     />

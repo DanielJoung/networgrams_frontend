@@ -34,7 +34,6 @@ class WritePost extends Component {
     })
       .then((res) => res.json())
       .then((resJson) => {
-        // console.log("NewForm - resJson", resJson);
         this.props.createPost(resJson);
         this.setState({
           name: "",
@@ -50,7 +49,7 @@ class WritePost extends Component {
     return (
       <>
         <Header />
-        <h1 id="log-reg-h1">Post page</h1>
+        <h1 id="form-h1">New Post</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
@@ -60,27 +59,26 @@ class WritePost extends Component {
               name="title"
               onChange={this.handleChange}
               value={this.state.title}
-              placeholder="add a title"
+              placeholder="Add a title"
               required
             />
           </div>
 
           <div>
             <textarea
-              className="textarea"
               type="text"
               id="content"
               name="content"
               rows="10"
               onChange={this.handleChange}
               value={this.state.content}
-              placeholder="add a post"
+              placeholder="Add a post"
               required
             ></textarea>
           </div>
 
           <input
-            class="button is-success"
+            id="form-submit"
             type="submit"
             value="Submit"
             onClick={this.handleClick}

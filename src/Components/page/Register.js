@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import RegisterButton from "../ui/RegisterButton";
-
 import Header from "./Header";
-// import "bulma/css/bulma.min.css";
 import WithRouter from "./WithRouter";
 
 class Register extends Component {
@@ -59,15 +57,14 @@ class Register extends Component {
     return (
       <>
         <Header />
-        <h1 id="log-reg-h1">Register</h1>
+        <h1 id="input-h1">Register</h1>
         <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.getUser} id="form">
-          <div className="field">
-            <label className="label">Name</label>
-
-            <div className="control has-icons-left">
+        
+            <label>Name: </label>
+            <div>
               <input
-                className="input"
+                className="id-input"
                 type="text"
                 placeholder="Username"
                 name="name"
@@ -76,13 +73,11 @@ class Register extends Component {
                 onChange={this.handleChange}
               />
             </div>
-          </div>
-          <div className="field">
-            <label className="label">ID</label>
-            <div className="control has-icons-left">
+            <label >ID: </label>
+            <div>
               <input
+                className="id-input"
                 placeholder="Id"
-                className="input"
                 type="text"
                 name="id"
                 id="id"
@@ -90,12 +85,10 @@ class Register extends Component {
                 onChange={this.handleChange}
               />
             </div>
-          </div>
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control has-icons-left">
+            <label>Password: </label>
+            <div>
               <input
-                className="input"
+                className="pw-input"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -104,10 +97,7 @@ class Register extends Component {
                 onChange={this.handleChange}
               />
             </div>
-          </div>
-          <div className="buttons">
             <RegisterButton />
-          </div>
         </form>
       </>
     );

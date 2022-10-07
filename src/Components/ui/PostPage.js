@@ -2,8 +2,8 @@ import React from "react";
 
 function PostPage() {
   return (
-    <a id="post-button" href="/post">
-      Post
+    <a id="post-tag" href="/post">
+      Write a new post
     </a>
   );
 }

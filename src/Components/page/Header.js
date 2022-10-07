@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import RegisterPage from "../ui/RegisterPage";
 import LoginPage from "../ui/LoginPage";
 import LogoutButton from "../ui/LogoutButton";
-import PostPage from "../ui/PostPage";
 import Welcome from "../ui/Welcome";
 import WithRouter from "./WithRouter";
-// import "bulma/css/bulma.min.css";
 
 class Header extends Component {
   constructor() {
