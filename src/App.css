@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Josefin+Sans&display&family=Peralta=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Josefin+Sans&display&family=Peralta&family=Montserrat:ital&family=Roboto:wght@700&display=swap');
 
 * {
   margin: 10px;
@@ -32,10 +32,9 @@
 
 /* Header */
 
-
 #header-title {
   /* background-color: brown; */
-  height: 20vh;
+  height: 30vh;
   background-image: 
     linear-gradient(rgba(4,9,30,0.5), rgba(4,9,30,0.7)), 
     url('https://images.unsplash.com/photo-1542382257-80dedb725088?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
@@ -45,19 +44,15 @@
   font-weight: 700;
   color:White;
   font-style: italic;
-  font-size: 70px;
+  font-size: 100px;
   align-items:center ;
   margin:0 auto;
-  padding-top: 20px;
   text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-/* #header-title {
-  font-family: 'Bungee Spice', cursive;
-  margin: 10px 0 10px 10px;
-  font-size: 30px;
-  color: inherit;
-} */
 
 #welcome_p {
   font-family: 'Montserrat', sans-serif;
@@ -90,10 +85,8 @@
 
 /* PostList */
 .post-list{
-  /* background-color:darkkhaki; */
   display:inline-block;
   width: 500px;;
-
 }
 
 .post-box {
@@ -116,12 +109,11 @@
   font-family: 'Roboto', sans-serif;
   background-color: rgb(255,255,255);
   font-size: 30px;
+  font-weight: bold;
   padding: 0.5em;
   margin: 0 30px;
   border-radius: 5px;
 }
-
-/* &family=Montserrat:ital&family=Roboto:wght@700&display  */
 
 a .title-tag {
   text-decoration: none; 
@@ -153,21 +145,48 @@ a :hover {
   margin: 10px;
   font-weight: bold;
 }
-/* like-buttons */
+
+/* post-detail */
+#post-detail-box {
+  width:80%;
+  /* height: 70vh; */
+  background-color: rgb(230,223,212);
+  margin: 0 auto;
+  text-align: center;
+}
+
+#post-detail-h1 {
+  background-color:rgb(230,223,212);
+  padding: 20px;
+  font-family: 'Peralta', cursive;
+  color: rgb(61,40,30);
+  font-size: 80px;
+}
+
+#post-detail-p {
+  background-color: rgb(230,223,212);
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  text-align: justify;
+  padding: 10px 40px;
+  word-break: normal;
+  line-height: 1.5;
+}
+
 #like-button {
-  border: 0;
-  background-color: white;
+  background-color: rgb(230,223,212);
+  border: 1px solid rgb(230,223,212);
+  width: 100px;
+  border-radius: 10px;
   float: right;
   cursor: pointer;
+  padding: 10px;
+  margin-right: 150px;
 }
 
-/* post-list */
-#post-title {
-  color: black;
-  font-family:'Times New Roman', Times, serif
+#like-num {
+  background-color: rgb(230,223,212);
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
 }
 
-.post-name {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  float: right;
-}

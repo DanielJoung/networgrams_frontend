@@ -18,7 +18,6 @@ class Header extends Component {
     return (
       <>
               <a 
-              className="navbar-item"
               onClick={() => this.props.navigate("/")}
               ><p id="header-title">
                   Networgram</p>  

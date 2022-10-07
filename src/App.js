@@ -12,7 +12,7 @@ import WritePost from "./Components/page/WritePost";
 import CreateComment from "./Components/page/CreateComment";
 // import { posts } from "../../networgrams_backend/controllers";
 
-const post_id = localStorage.getItem("post_id");
+// const post_id = localStorage.getItem("post_id");
 class App extends Component {
   constructor() {
     super();
