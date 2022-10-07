@@ -80,18 +80,18 @@ class PostList extends Component {
     return (
       <>
         {/* <Header /> */}
+
         <div>
           {this.props?.posts?.map((post, index) => {
             return (
               <div key={post._id}>
-                <p className="post-name">{post.name}</p>
-
                 <div class="box">
                   <a
                     id="post-title"
                     onClick={() => this.handleMovePage(post._id)}
                   >
                     {post.title}
+                    <span className="post-name">{post.name}</span>
                     <span>{post.date}</span>
                   </a>
                   <div className="buttons is-right">

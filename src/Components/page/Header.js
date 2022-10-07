@@ -18,7 +18,8 @@ class Header extends Component {
     return (
       <>
         <nav
-          className="navbar head"
+          className="navbar"
+          id="head"
           role="navigation"
           aria-label="main navigation"
         >
@@ -33,7 +34,7 @@ class Header extends Component {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              <div className="buttons">
+              <div className="buttons" id="header-button">
                 {localStorage.getItem("id") ? (
                   <Welcome id={this.state.id} />
                 ) : (

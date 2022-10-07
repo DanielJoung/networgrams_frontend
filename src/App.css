@@ -17,6 +17,18 @@
   border: 1px solid orange;
 }
 
+/* App.js */
+.app-div {
+  margin-top: 20%;
+}
+
+.app-p{
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+}
+
+
 /* Header */
 #header-title {
   font-family: 'Bungee Spice', cursive;
@@ -31,12 +43,6 @@
 #welcome_p {
   font-family: "Josefin Sans", cursive ;
 }
-
-.head {
-  white-space: nowrap;
-  overflow: auto;
-}
-
 
 /* form */
 #form {
@@ -71,4 +77,5 @@
 
 .post-name {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  float: right;
 }
