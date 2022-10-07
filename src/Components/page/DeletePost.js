@@ -16,8 +16,7 @@ class DeletePost extends Component {
   render() {
     return (
       <>
-        <button
-          className="button is-small is-danger"
+        <button id="delete-btn"
           onClick={() => this.props.deletePost(this.props.postId)}
         >
           Delete

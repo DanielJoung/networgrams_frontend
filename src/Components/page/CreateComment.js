@@ -45,7 +45,7 @@ class CreateComment extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          {/* <div>
             <input
               type="text"
               id="name"
@@ -54,7 +54,7 @@ class CreateComment extends Component {
               value={this.state.name}
               placeholder="name"
             />
-          </div>
+          </div> */}
 
           <div>
             <input

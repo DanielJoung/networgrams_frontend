@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import LoginButton from "../ui/LoginButton";
 import CancelButton from "../ui/CancelButton";
 import Header from "./Header";
-import "bulma/css/bulma.min.css";
+// import "bulma/css/bulma.min.css";
 import WithRouter from "./WithRouter";
 
 class Login extends Component {

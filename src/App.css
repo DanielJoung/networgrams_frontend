@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Josefin+Sans&display&family=Peralta=swap');
 
 * {
   margin: 10px;
+  background-color: rgb(235,236,240);
 }
 
 .App {
@@ -19,14 +20,34 @@
 
 /* Header */
 #header-title {
+  /* background-color: brown; */
+  font-family: 'Peralta', cursive;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 70px;
+  align-items:center ;
+  margin: 10px auto;
+  text-align: center;
+
+}
+
+/* #header-title {
   font-family: 'Bungee Spice', cursive;
   margin: 10px 0 10px 10px;
   font-size: 30px;
   color: inherit;
-}
+} */
 
 #welcome_p {
-  font-family: "Josefin Sans", cursive ;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: right;
+}
+
+#log-out {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: right;
 }
 
 .head {
@@ -49,4 +70,68 @@
 #reg-log-error {
   color: red;
   padding-left: 50px;
+}
+
+/* PostList */
+.post-list{
+  /* background-color:darkkhaki; */
+  display:inline-block;
+  width: 500px;;
+
+}
+
+.post-box {
+  background-color: rgb(190,210,210);
+  margin: 30px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#name-p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  background-color: rgb(190,210,210);
+  padding-top: 10px;
+  text-align: left;
+}
+
+#title-p{
+  font-family: 'Roboto', sans-serif;
+  background-color: rgb(255,255,255);
+  font-size: 30px;
+  padding: 0.5em;
+  margin: 0 30px;
+  border-radius: 5px;
+}
+
+/* &family=Montserrat:ital&family=Roboto:wght@700&display  */
+
+a .title-tag {
+  text-decoration: none; 
+}
+
+a :hover {
+  color:saddlebrown;
+  cursor:pointer
+}
+
+#edit-btn {
+  background-color:rgb(255,255,255);
+  width: 75px;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 15px;
+  cursor:pointer;
+  margin: 10px;
+}
+
+#delete-btn {
+  background-color:rgb(255,255,255);
+  width: 75px;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 15px;
+  cursor:pointer;
+  margin: 10px;
 }

@@ -9,6 +9,7 @@ import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
 import CancelButton from "../ui/CancelButton";
 import WithRouter from "./WithRouter";
+// import defaultPic from ".../public/image/defaultPic.pnc"
 
 let baseURL = "";
 
@@ -21,84 +22,35 @@ if (process.env.NODE_ENV === "development") {
 class PostList extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   post: [],
-    // };
   }
 
-  // componentDidMount() {
-  //   this.getPost();
-  // }
-
-  // getPost = () => {
-  //   // e.preventDefault();
-  //   fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post")
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         return res.json();
-  //       } else {
-  //         return [];
-  //       }
-  //     })
-  //     .then((data) => {
-  //       console.log("post data", data);
-  //       // console.log(data.post.name);
-  //       this.setState({ post: data.post });
-  //     });
-  // };
-
   handleMovePage = (id) => {
-    // console.log(this.state.post);
-    // localStorage.setItem("post_id", id);
     this.props.setPostId(id);
     this.props.navigate(`/post/${id}`);
   };
 
-  // handleAddPost = (post) => {
-  //   const copyPost = [...this.state.post];
-
-  //   copyPost.unshift(post);
-  //   this.setState({
-  //     post: copyPost,
-  //     title: "",
-  //     // date: "",
-  //   });
-  // };
-
-  // deletePost = (id) => {
-  //   fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
-  //     method: "DELETE",
-  //   }).then((response) => {
-  //     const findIndex = this.state.post.findIndex((post) => post._id === id);
-  //     const copyPost = [...this.state.post];
-  //     copyPost.splice(findIndex, 1);
-  //     this.setState({ post: copyPost });
-  //   });
-  // };
-
   render() {
     return (
       <>
-        {/* <Header /> */}
         <div>
           {this.props?.posts?.map((post, index) => {
-            return (
-              <div key={post._id}>
-                <p className="name">{post.name}</p>
+            return (          
+              <section className="post-list">
+              <div className="post-box" key={post._id}>           
+                <p id="name-p" >{post.name}</p>
+                <img src="https://i.imgur.com/0dqdq3m.jpeg" alt="default pic" width="400"/>
                 <p>{post.date}</p>
-                <p class="box">
-                  <a onClick={() => this.handleMovePage(post._id)}>
-                    {post.title}
+               
+                  <a className="title-tag" onClick={() => this.handleMovePage(post._id)}>
+                  <p id="title-p" >{post.title}</p>
                   </a>
-                </p>
-                <div className="buttons">
                   <EditPage post={post} setPostId={this.props.setPostId} />
-                  <DeletePost
+                  <DeletePost 
                     deletePost={this.props.deletePost}
                     postId={post._id}
                   />
-                </div>
               </div>
+              </section>
             );
           })}
         </div>

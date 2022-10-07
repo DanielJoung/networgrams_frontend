@@ -8,9 +8,12 @@ class LogoutButton extends Component {
 
   render() {
     return (
-      <a className="button is-small" onClick={this.handleClick}>
+      <p id="log-out">
+      <a 
+      // className="button is-small" 
+      onClick={this.handleClick}>
         Sign Out
-      </a>
+      </a></p>
     );
   }
 }
