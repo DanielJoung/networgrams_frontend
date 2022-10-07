@@ -96,20 +96,18 @@ class PostDetail extends Component {
         <Header />
         <div id="post-detail-box">
           <h1 id="post-detail-h1">On the Blog</h1>
-          <p id="post-detail-p">
-          {this.state.post.content}
-          </p>
+          <p id="post-detail-p">{this.state.post.content}</p>
         </div>
-        <button 
-            id="like-button"
-            onClick={() => {
-              this.handleAddLike();
-            }}
-          >
-            ❤️
-            <span id="like-num">{this.state.post.like}</span>
-          </button>        
-          <CommentList post={this.state.post} /> 
+        <button
+          id="like-button"
+          onClick={() => {
+            this.handleAddLike();
+          }}
+        >
+          ❤️
+          <span id="like-num">{this.state.post.like}</span>
+        </button>
+        <CommentList post={this.state.post} />
       </>
     );
   }

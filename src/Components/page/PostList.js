@@ -34,8 +34,8 @@ class PostList extends Component {
         <div>
           {this.props?.posts?.map((post, index) => {
             return (
-              <section className="post-list">
-                <div className="post-box" key={post._id}>
+              <section className="post-list" key={post._id}>
+                <div className="post-box">
                   <p id="name-p">{post.name}</p>
                   <img
                     src="https://i.imgur.com/0dqdq3m.jpeg"
