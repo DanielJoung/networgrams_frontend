@@ -23,15 +23,16 @@ class Header extends Component {
           aria-label="main navigation"
         >
           <div className="navbar-brand"> */}
-            <p id="header-title">
-              <a
+         
+          
+              <a 
               className="navbar-item"
               onClick={() => this.props.navigate("/")}
-              
-             >
-              Networgram
+              ><p id="header-title">
+                  Networgram</p>  
               </a>
-            </p>
+     
+       
           {/* </div> */}
           {/* <div className="navbar-end">
             <div className="navbar-item"> */}
