@@ -25,11 +25,9 @@ class App extends Component {
   }
 
   setPostId = (id) => {
-    this.setState(
-      {
-        currentPostId: id,
-      },
-    );
+    this.setState({
+      currentPostId: id,
+    });
   };
 
   getPost = () => {
@@ -57,7 +55,6 @@ class App extends Component {
   };
 
   deletePost = (id) => {
-    console.log(this.state.post);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
