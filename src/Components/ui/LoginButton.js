@@ -4,7 +4,7 @@ function LoginButton() {
   return (
     <input
       type="submit"
-      className="is-primary is-rounded button"
+      // className="is-primary is-rounded button"
       value="Sign In"
     />
   );

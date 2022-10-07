@@ -48,6 +48,17 @@ class CreateComment extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit}>
+          {/* <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={this.handleChange}
+              value={this.state.name}
+              placeholder="name"
+            />
+          </div> */}
+
           <div>
             <input
               type="text"

@@ -9,10 +9,10 @@ function EditPage(props) {
     props.navigate("/post/edit/" + props.post._id);
   };
   return (
-    <button className="button is-small" onClick={() => handleEdit()}>
+    <button id="edit-btn" onClick={() => handleEdit()}>
       Edit
     </button>
   );
 }
 
-export default WithRouter(EditPage);
+export default WithRouter(EditPage); 
