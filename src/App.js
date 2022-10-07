@@ -9,6 +9,8 @@ import "./App.css";
 // import EditPage from "./Components/ui/EditPage";
 import UpdatePost from "./Components/page/UpdatePost";
 import WritePost from "./Components/page/WritePost";
+import CreateComment from "./Components/page/CreateComment";
+// import { posts } from "../../networgrams_backend/controllers";
 
 const post_id = localStorage.getItem("post_id");
 class App extends Component {
@@ -17,6 +19,7 @@ class App extends Component {
     this.state = {
       post: [],
       currentPostId: "",
+      comment: [],
     };
     // this.setPostId = this.setPostId.bind(this);
   }
@@ -32,7 +35,7 @@ class App extends Component {
         currentPostId: id,
       },
       () => {
-        console.log(this.state.currentPostId, "main");
+        // console.log(this.state.currentPostId, "main");
         // window.location = ;
       }
     );
@@ -84,6 +87,13 @@ class App extends Component {
     });
   };
 
+  createComment = (comment) => {
+    const comments = [...this.state.post.comment, comment];
+    this.setState({
+      comment: comments,
+    });
+  };
+
   updatePost = (body) => {
     fetch(
       process.env.REACT_APP_BACKEND_URL +
@@ -99,7 +109,7 @@ class App extends Component {
     )
       .then((res) => res.json())
       .then((resJson) => {
-        console.log("NewForm - resJson", resJson);
+        // console.log("NewForm - resJson", resJson);
         this.getPost();
       })
       .catch((error) => console.error({ Error: error }));
@@ -123,7 +133,7 @@ class App extends Component {
   // };
 
   render() {
-    console.log(this.state, "render");
+    // console.log(this.state, "render");
     return (
       <>
         <Router>
@@ -155,10 +165,17 @@ class App extends Component {
             <Route
               path="/post/:id"
               element={
-                <PostDetail
-                  currentPostId={this.state.currentPostId}
-                  posts={this.state.post}
-                />
+                <>
+                  <PostDetail
+                    currentPostId={this.state.currentPostId}
+                    posts={this.state.post}
+                  />
+                  <CreateComment
+                    currentPostId={this.state.currentPostId}
+                    posts={this.state.post}
+                    createComment={this.createComment}
+                  />
+                </>
               }
             />
             <Route

@@ -55,6 +55,7 @@
   overflow: auto;
 }
 
+
 /* form */
 #form {
   margin: 10px 30px 10px 30px;
@@ -134,4 +135,21 @@ a :hover {
   border-radius: 15px;
   cursor:pointer;
   margin: 10px;
+}
+/* like-buttons */
+#like-button {
+  border: 0;
+  background-color: white;
+  float: right;
+  cursor: pointer;
+}
+
+/* post-list */
+#post-title {
+  color: black;
+  font-family:'Times New Roman', Times, serif
+}
+
+.post-name {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
