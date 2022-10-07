@@ -32,6 +32,7 @@ class PostList extends Component {
   render() {
     return (
       <>
+
         <div>
           {this.props?.posts?.map((post, index) => {
             return (          
@@ -43,6 +44,10 @@ class PostList extends Component {
                
                   <a className="title-tag" onClick={() => this.handleMovePage(post._id)}>
                   <p id="title-p" >{post.title}</p>
+
+        {/* <Header /> */}
+
+
                   </a>
                   <EditPage post={post} setPostId={this.props.setPostId} />
                   <DeletePost 

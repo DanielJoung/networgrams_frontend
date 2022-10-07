@@ -17,8 +17,11 @@ class Header extends Component {
   render() {
     return (
       <>
-        {/* <nav
-          className="navbar head"
+
+        <nav
+          className="navbar"
+          id="head"
+
           role="navigation"
           aria-label="main navigation"
         >
@@ -30,12 +33,15 @@ class Header extends Component {
               
              >
               Networgram
+
               </a>
             </p>
-          {/* </div> */}
-          {/* <div className="navbar-end">
-            <div className="navbar-item"> */}
-              {/* <div className="buttons"> */}
+
+          </div>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons" id="header-button">
+
                 {localStorage.getItem("id") ? (
                   <Welcome id={this.state.id} />
                 ) : (
