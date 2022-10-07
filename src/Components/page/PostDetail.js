@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import Header from "./Header";
 import CommentList from "./CommentList";
 import WithRouter from "./WithRouter";
-import CreateComment from "./CreateComment";
-import PostList from "./PostList";
-import UpdatePost from "./UpdatePost";
 
 class PostDetail extends Component {
   constructor(props) {
@@ -97,25 +94,22 @@ class PostDetail extends Component {
     return (
       <>
         <Header />
-        <h1>Post Detail</h1>
-
-        <p className="box">
+        <div id="post-detail-box">
+          <h1 id="post-detail-h1">On the Blog</h1>
+          <p id="post-detail-p">
           {this.state.post.content}
-
-          <button
-            className="buttons is-small"
+          </p>
+        </div>
+        <button 
             id="like-button"
             onClick={() => {
               this.handleAddLike();
             }}
           >
-            <span>{this.state.post.like}</span>
             ❤️
-          </button>
-        </p>
-
-        {/* <UpdatePost editPost={this.editPost} /> */}
-        <CommentList post={this.state.post} />
+            <span id="like-num">{this.state.post.like}</span>
+          </button>        
+          <CommentList post={this.state.post} /> 
       </>
     );
   }
