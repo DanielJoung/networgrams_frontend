@@ -6,6 +6,7 @@ import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
 import WithRouter from "./WithRouter";
+import PostPage from "../ui/PostPage";
 // import defaultPic from ".../public/image/defaultPic.pnc"
 
 let baseURL = "";
@@ -29,6 +30,7 @@ class PostList extends Component {
   render() {
     return (
       <>
+        <PostPage />
         <div>
           {this.props?.posts?.map((post, index) => {
             return (

@@ -10,9 +10,10 @@ import "./App.css";
 import UpdatePost from "./Components/page/UpdatePost";
 import WritePost from "./Components/page/WritePost";
 import CreateComment from "./Components/page/CreateComment";
+import PostPage from "./Components/ui/PostPage";
 // import { posts } from "../../networgrams_backend/controllers";
 
-const post_id = localStorage.getItem("post_id");
+// const post_id = localStorage.getItem("post_id");
 class App extends Component {
   constructor() {
     super();
@@ -159,6 +160,7 @@ class App extends Component {
                 </>
               }
             />
+            \
             <Route path="/user/register" element={<Register />} />
             <Route
               path="/user/signin"

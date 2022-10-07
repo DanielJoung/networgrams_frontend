@@ -25,7 +25,7 @@ class Header extends Component {
           <div id="header-link">
             {localStorage.getItem("id") ? <Welcome id={this.state.id} /> : ""}
             {localStorage.getItem("id") ? <LogoutButton /> : <RegisterPage />}
-            {localStorage.getItem("id") ? <PostPage /> : <LoginPage />}
+            {localStorage.getItem("id") ? "" : <LoginPage />}
           </div>
         </div>
       </>
