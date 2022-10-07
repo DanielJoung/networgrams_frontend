@@ -145,7 +145,9 @@ class App extends Component {
                 <>
                   <Header />
                   {!localStorage.getItem("id") ? (
-                    ""
+                    <div class="app-div">
+                      <p class="app-p">Please Sign In first to see the post</p>
+                    </div>
                   ) : (
                     <PostList
                       posts={this.state.post}

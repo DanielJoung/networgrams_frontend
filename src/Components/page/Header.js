@@ -17,26 +17,12 @@ class Header extends Component {
   render() {
     return (
       <>
-        {/* <nav
-          className="navbar head"
-          role="navigation"
-          aria-label="main navigation"
-        >
-          <div className="navbar-brand"> */}
-         
-          
               <a 
               className="navbar-item"
               onClick={() => this.props.navigate("/")}
               ><p id="header-title">
                   Networgram</p>  
               </a>
-     
-       
-          {/* </div> */}
-          {/* <div className="navbar-end">
-            <div className="navbar-item"> */}
-              {/* <div className="buttons"> */}
                 {localStorage.getItem("id") ? (
                   <Welcome id={this.state.id} />
                 ) : (
@@ -48,10 +34,6 @@ class Header extends Component {
                   <RegisterPage />
                 )}
                 {localStorage.getItem("id") ? <PostPage /> : <LoginPage />}
-              {/* </div> */}
-            {/* </div>
-          </div>
-        </nav> */}
       </>
     );
   }

@@ -18,6 +18,18 @@
   border: 1px solid orange;
 }
 
+/* App.js */
+.app-div {
+  margin-top: 20%;
+}
+
+.app-p{
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+}
+
+
 /* Header */
 
 
@@ -58,12 +70,6 @@
   font-size: 20px;
   text-align: right;
 }
-
-.head {
-  white-space: nowrap;
-  overflow: auto;
-}
-
 
 /* form */
 #form {
@@ -163,4 +169,5 @@ a :hover {
 
 .post-name {
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  float: right;
 }
