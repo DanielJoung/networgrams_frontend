@@ -10,6 +10,8 @@ import "./App.css";
 import UpdatePost from "./Components/page/UpdatePost";
 import WritePost from "./Components/page/WritePost";
 import CreateComment from "./Components/page/CreateComment";
+import PostPage from "./Components/ui/PostPage";
+import Swal from "sweetalert2";
 // import { posts } from "../../networgrams_backend/controllers";
 
 // const post_id = localStorage.getItem("post_id");
@@ -70,13 +72,34 @@ class App extends Component {
   };
 
   deletePost = (id) => {
-    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
-      method: "DELETE",
-    }).then((response) => {
-      const findIndex = this.state.post.findIndex((post) => post._id === id);
-      const copyPost = [...this.state.post];
-      copyPost.splice(findIndex, 1);
-      this.setState({ post: copyPost });
+    // sweet alert2
+    console.log(this.state.post);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Deleted!",
+          localStorage.getItem("id") + " post is deleted.",
+          "success"
+        );
+        fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post/" + id, {
+          method: "DELETE",
+        }).then((response) => {
+          const findIndex = this.state.post.findIndex(
+            (post) => post._id === id
+          );
+          const copyPost = [...this.state.post];
+          copyPost.splice(findIndex, 1);
+          this.setState({ post: copyPost });
+        });
+      }
     });
   };
 
@@ -159,6 +182,7 @@ class App extends Component {
                 </>
               }
             />
+            \
             <Route path="/user/register" element={<Register />} />
             <Route
               path="/user/signin"

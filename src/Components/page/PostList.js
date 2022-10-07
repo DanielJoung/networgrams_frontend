@@ -6,6 +6,7 @@ import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
 import WithRouter from "./WithRouter";
+import PostPage from "../ui/PostPage";
 // import defaultPic from ".../public/image/defaultPic.pnc"
 
 let baseURL = "";
@@ -29,11 +30,12 @@ class PostList extends Component {
   render() {
     return (
       <>
+        <PostPage />
         <div>
           {this.props?.posts?.map((post, index) => {
             return (
-              <section className="post-list">
-                <div className="post-box" key={post._id}>
+              <section className="post-list" key={post._id}>
+                <div className="post-box">
                   <p id="name-p">{post.name}</p>
                   <img
                     src="https://i.imgur.com/0dqdq3m.jpeg"
@@ -50,11 +52,19 @@ class PostList extends Component {
 
                     {/* <Header /> */}
                   </a>
-                  <EditPage post={post} setPostId={this.props.setPostId} />
-                  <DeletePost
-                    deletePost={this.props.deletePost}
-                    postId={post._id}
-                  />
+                  {localStorage.getItem("id") !== post.name ? (
+                    ""
+                  ) : (
+                    <EditPage post={post} setPostId={this.props.setPostId} />
+                  )}
+                  {localStorage.getItem("id") !== post.name ? (
+                    ""
+                  ) : (
+                    <DeletePost
+                      deletePost={this.props.deletePost}
+                      postId={post._id}
+                    />
+                  )}
                 </div>
               </section>
             );

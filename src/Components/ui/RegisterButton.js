@@ -1,7 +1,13 @@
 import React from "react";
 
 function RegisterButton() {
-  return <input className="is-primary is-rounded button" type="Submit" />;
+  return (
+    <input
+      className="is-primary is-rounded button"
+      type="Submit"
+      value="Register"
+    />
+  );
 }
 
 export default RegisterButton;
