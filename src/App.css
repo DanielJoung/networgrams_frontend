@@ -167,7 +167,6 @@
 /* post-detail */
 #post-detail-box {
   width:80%;
-  /* height: 70vh; */
   background-color: rgb(230,223,212);
   margin: 20px auto;
   text-align: center;
@@ -221,7 +220,6 @@
 }
 
 #title {
-  /* background-color: goldenrod; */
   width: 80%;
   padding: 12px 20px;
   margin: 8px 100px;
@@ -286,10 +284,11 @@
   color: rgb(61,40,30);
   font-size: 40px;
 }
+
 .id-input {
+  background-color: rgb(235,236,240);
   width: 40%;
   padding: 12px 20px;
-  /* margin: 8px 0; */
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -322,6 +321,37 @@
 }
 
 #input-submit:hover {
+  color: white;
+  background-color: rgb(169, 116, 30);
+}
+
+/* comment */
+#comment-content{
+  background-color: rgb(235,236,240);
+  width: 30%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-left: 150px;
+}
+
+#comment-submit {
+  width: 12%;
+  background-color: rgb(222, 196, 154);
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  
+}
+
+#comment-submit:hover {
   color: white;
   background-color: rgb(169, 116, 30);
 }

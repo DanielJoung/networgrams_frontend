@@ -38,10 +38,6 @@ class UpdatePost extends Component {
     });
   };
 
-  // handleClick = () => {
-  //   window.location = "/";
-  // };
-
   render() {
     return (
       <>

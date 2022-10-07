@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
-import WritePost from "./WritePost";
-import Header from "./Header";
-import UpdatePost from "./UpdatePost";
 import DeletePost from "./DeletePost";
 import EditPage from "../ui/EditPage";
 import WithRouter from "./WithRouter";
 import PostPage from "../ui/PostPage";
-// import defaultPic from ".../public/image/defaultPic.pnc"
 
 let baseURL = "";
 
