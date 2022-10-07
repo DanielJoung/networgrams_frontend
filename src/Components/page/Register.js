@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import RegisterButton from "../ui/RegisterButton";
-import CancelButton from "../ui/CancelButton";
+
 import Header from "./Header";
 // import "bulma/css/bulma.min.css";
 import WithRouter from "./WithRouter";
@@ -107,7 +107,6 @@ class Register extends Component {
           </div>
           <div className="buttons">
             <RegisterButton />
-            <CancelButton />
           </div>
         </form>
       </>

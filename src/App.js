@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   setPostId = (id) => {
-    console.log(id);
+    // console.log(id);
     this.setState(
       {
         // ...this.state,
@@ -52,7 +52,7 @@ class App extends Component {
         }
       })
       .then((data) => {
-        console.log("post data", data);
+        // console.log("post data", data);
         // console.log(data.post.name);
         this.setState({ post: data.post });
       });

@@ -40,7 +40,7 @@
   align-items:center ;
   margin: 10px auto;
   text-align: center;
-
+  cursor: pointer;
 }
 
 /* #header-title {
@@ -60,6 +60,12 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   text-align: right;
+  cursor: pointer;
+}
+
+#header-button {
+  text-decoration: none;
+  color: black;
 }
 
 /* form */
