@@ -5,6 +5,7 @@ import LogoutButton from "../ui/LogoutButton";
 import PostPage from "../ui/PostPage";
 import Welcome from "../ui/Welcome";
 import WithRouter from "./WithRouter";
+// import "bulma/css/bulma.min.css";
 
 class Header extends Component {
   constructor() {
@@ -17,22 +18,16 @@ class Header extends Component {
   render() {
     return (
       <>
-              <a 
-              onClick={() => this.props.navigate("/")}
-              ><p id="header-title">
-                  Networgram</p>  
-              </a>
-                {localStorage.getItem("id") ? (
-                  <Welcome id={this.state.id} />
-                ) : (
-                  ""
-                )}
-                {localStorage.getItem("id") ? (
-                  <LogoutButton />
-                ) : (
-                  <RegisterPage />
-                )}
-                {localStorage.getItem("id") ? <PostPage /> : <LoginPage />}
+        <div className="header-div">
+          <div id="header-title" onClick={() => this.props.navigate("/")}>
+            Networgram
+          </div>
+          <div id="header-link">
+            {localStorage.getItem("id") ? <Welcome id={this.state.id} /> : ""}
+            {localStorage.getItem("id") ? <LogoutButton /> : <RegisterPage />}
+            {localStorage.getItem("id") ? <PostPage /> : <LoginPage />}
+          </div>
+        </div>
       </>
     );
   }
