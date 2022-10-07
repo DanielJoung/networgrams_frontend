@@ -59,16 +59,15 @@ class Login extends Component {
     return (
       <>
         <Header id={this.state.id} />
-        <h1 id="log-reg-h1">Sign in</h1>
+        <h1 id="input-h1">Sign in</h1>
         <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.postUser} id="form">
           <div className="field">
-            <label className="label">ID</label>
-
+            <label className="label">ID: </label>
             <div className="control has-icons-left">
               <input
                 placeholder="Id"
-                className="input"
+                className="id-input"
                 type="text"
                 name="id"
                 id="id"
@@ -78,10 +77,10 @@ class Login extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label">Password</label>
+            <label className="label">Password: </label>
             <div className="control has-icons-left">
               <input
-                className="input"
+                className="pw-input"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -91,9 +90,7 @@ class Login extends Component {
               />
             </div>
           </div>
-          <div className="buttons">
             <LoginButton />
-          </div>
         </form>
       </>
     );

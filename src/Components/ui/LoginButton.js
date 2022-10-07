@@ -3,8 +3,8 @@ import React from "react";
 function LoginButton() {
   return (
     <input
+      id="input-submit"
       type="submit"
-      // className="is-primary is-rounded button"
       value="Sign In"
     />
   );

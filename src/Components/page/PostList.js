@@ -45,14 +45,14 @@ class PostList extends Component {
                   <p>{post.date}</p>
 
                   <a
-                    className="title-tag"
+                    id="title-tag"
                     onClick={() => this.handleMovePage(post._id)}
                   >
                     <p id="title-p">{post.title}</p>
-
-                    {/* <Header /> */}
                   </a>
-                  {localStorage.getItem("id") !== post.name ? (
+                  
+                </div>
+                {localStorage.getItem("id") !== post.name ? (
                     ""
                   ) : (
                     <EditPage post={post} setPostId={this.props.setPostId} />
@@ -65,7 +65,6 @@ class PostList extends Component {
                       postId={post._id}
                     />
                   )}
-                </div>
               </section>
             );
           })}

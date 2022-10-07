@@ -9,9 +9,8 @@ class LogoutButton extends Component {
   render() {
     return (
       <a
-        // className="button is-small"
         onClick={this.handleClick}
-        id="log-out"
+        id="sign-btn"
       >
         Sign Out
       </a>

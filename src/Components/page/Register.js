@@ -59,15 +59,15 @@ class Register extends Component {
     return (
       <>
         <Header />
-        <h1 id="log-reg-h1">Register</h1>
+        <h1 id="input-h1">Register</h1>
         <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.getUser} id="form">
           <div className="field">
-            <label className="label">Name</label>
+            <label className="label">Name: </label>
 
             <div className="control has-icons-left">
               <input
-                className="input"
+                className="id-input"
                 type="text"
                 placeholder="Username"
                 name="name"
@@ -78,11 +78,11 @@ class Register extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label">ID</label>
+            <label className="label">ID: </label>
             <div className="control has-icons-left">
               <input
                 placeholder="Id"
-                className="input"
+                className="id-input"
                 type="text"
                 name="id"
                 id="id"
@@ -92,10 +92,10 @@ class Register extends Component {
             </div>
           </div>
           <div className="field">
-            <label className="label">Password</label>
+            <label className="label">Password: </label>
             <div className="control has-icons-left">
               <input
-                className="input"
+                className="pw-input"
                 type="password"
                 placeholder="Password"
                 name="password"

@@ -2,7 +2,7 @@ import React from "react";
 
 function LoginPage() {
   return (
-    <a className="button is-small" id="header-button" href="/user/signin">
+    <a id="sign-btn" href="/user/signin">
       Sign In
     </a>
   );

@@ -46,11 +46,10 @@ class UpdatePost extends Component {
     return (
       <>
         <Header />
-        <h1 id="log-reg-h1">Edit Page</h1>
+        <h1 id="form-h1">Edit Page</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <input
-              className="input is-info"
               type="text"
               id="title"
               name="title"
@@ -62,7 +61,6 @@ class UpdatePost extends Component {
           </div>
           <div>
             <textarea
-              className="textarea"
               type="text"
               id="content"
               name="content"
@@ -74,8 +72,8 @@ class UpdatePost extends Component {
             ></textarea>
           </div>
           <input
+            id="form-submit"
             onClick={this.handleClick}
-            className="button is-small  is-success"
             type="submit"
             value="Edit"
           ></input>
