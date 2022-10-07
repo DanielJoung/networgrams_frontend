@@ -50,11 +50,19 @@ class PostList extends Component {
 
                     {/* <Header /> */}
                   </a>
-                  <EditPage post={post} setPostId={this.props.setPostId} />
-                  <DeletePost
-                    deletePost={this.props.deletePost}
-                    postId={post._id}
-                  />
+                  {localStorage.getItem("id") !== post.name ? (
+                    ""
+                  ) : (
+                    <EditPage post={post} setPostId={this.props.setPostId} />
+                  )}
+                  {localStorage.getItem("id") !== post.name ? (
+                    ""
+                  ) : (
+                    <DeletePost
+                      deletePost={this.props.deletePost}
+                      postId={post._id}
+                    />
+                  )}
                 </div>
               </section>
             );
