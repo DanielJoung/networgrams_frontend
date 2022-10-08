@@ -8,7 +8,8 @@ import Login from "./Components/page/Login";
 import "./App.css";
 import UpdatePost from "./Components/page/UpdatePost";
 import WritePost from "./Components/page/WritePost";
-import CreateComment from "./Components/page/CreateComment";
+// import CreateComment from "./Components/page/CreateComment";
+// import CommentList from "./Components/page/CommentList";
 import Swal from "sweetalert2";
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
         }
       })
       .then((data) => {
+        console.log(data.post.comment);
         this.setState({ post: data.post });
       });
   };
@@ -91,12 +93,12 @@ class App extends Component {
     });
   };
 
-  // createComment = (comment) => {
-  //   const comments = [...this.state.post.comment, comment];
-  //   this.setState({
-  //     comment: comments,
-  //   });
-  // };
+  createComment = (comment) => {
+    const comments = [...this.state.comment, comment];
+    this.setState({
+      comment: comments,
+    });
+  };
 
   updatePost = (body) => {
     fetch(
@@ -157,11 +159,12 @@ class App extends Component {
                     currentPostId={this.state.currentPostId}
                     posts={this.state.post}
                   />
-                  <CreateComment
+                  {/* <CreateComment
                     currentPostId={this.state.currentPostId}
                     posts={this.state.post}
                     createComment={this.createComment}
                   />
+                  <CommentList currentPostId={this.state.currentPostId} /> */}
                 </>
               }
             />

@@ -64,7 +64,7 @@
   cursor: pointer;
   position: absolute;
   top:4%;
-  right:10%;
+  right:4%;
   text-decoration: none; 
   background-image: 
   linear-gradient(rgba(4,9,30,0.5), rgba(4,9,30,0.7)), 
@@ -78,7 +78,7 @@
   font-size: 20px;
   cursor: pointer;
   position: absolute;
-  top:4%;
+  top:8%;
   right:4%;
   text-decoration: none; 
   background-image: 
@@ -324,7 +324,7 @@
 }
 
 #input-submit {
-  width: 10%;
+
   background-color: rgb(222, 196, 154);
   padding: 14px 20px;
   border: none;
