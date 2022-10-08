@@ -8,10 +8,7 @@ class LogoutButton extends Component {
 
   render() {
     return (
-      <a
-        onClick={this.handleClick}
-        id="sign-btn"
-      >
+      <a onClick={this.handleClick} id="signout-btn">
         Sign Out
       </a>
     );

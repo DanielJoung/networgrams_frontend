@@ -19,7 +19,7 @@ class WritePost extends Component {
   };
 
   handleSubmit = (event) => {
-    console.log(event, "event");
+    // console.log(event, "event");
     event.preventDefault();
     fetch("http://localhost:3003/networgram/post", {
       method: "POST",
@@ -77,12 +77,7 @@ class WritePost extends Component {
             ></textarea>
           </div>
 
-          <input
-            id="form-submit"
-            type="submit"
-            value="Submit"
-            onClick={this.handleClick}
-          ></input>
+          <input id="form-submit" type="submit" />
         </form>
       </>
     );
