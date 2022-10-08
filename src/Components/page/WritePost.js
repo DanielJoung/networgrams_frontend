@@ -77,7 +77,7 @@ class WritePost extends Component {
             ></textarea>
           </div>
 
-          <input id="form-submit" type="submit"></input>
+          <input id="form-submit" type="submit" />
         </form>
       </>
     );
