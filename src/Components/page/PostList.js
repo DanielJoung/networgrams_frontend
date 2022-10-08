@@ -50,7 +50,8 @@ class PostList extends Component {
                   <img
                     src="https://i.imgur.com/0dqdq3m.jpeg"
                     alt="default pic"
-                    width="400"
+                    id="list-img"
+                    width={400}
                   />
 
                   <a

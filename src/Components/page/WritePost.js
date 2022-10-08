@@ -21,7 +21,7 @@ class WritePost extends Component {
   handleSubmit = (event) => {
     // console.log(event, "event");
     event.preventDefault();
-    fetch("http://localhost:3003/networgram/post", {
+    fetch(process.env.REACT_APP_BACKEND_URL + "/networgram/post", {
       method: "POST",
       body: JSON.stringify({
         name: localStorage.getItem("id"),
@@ -35,11 +35,11 @@ class WritePost extends Component {
       .then((res) => res.json())
       .then((resJson) => {
         this.props.createPost(resJson);
-        // this.setState({
-        //   name: "",
-        //   title: "",
-        //   content: "",
-        // });
+        this.setState({
+          name: "",
+          title: "",
+          content: "",
+        });
         this.props.navigate("/");
       })
       .catch((error) => console.error({ Error: error }));

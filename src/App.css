@@ -109,7 +109,7 @@
 /* PostList */
 .post-list{
   display:inline-block;
-  width: 500px;;
+  width: 500px;
   margin: 15px 0;
 }
 
@@ -141,7 +141,7 @@
   text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
 }
 
 #title-tag {
@@ -150,7 +150,7 @@
 
 #title-tag:hover {
   color:saddlebrown;
-  cursor:pointer
+  cursor:pointer;
 }
 
 #edit-btn {
