@@ -52,7 +52,7 @@ class PostList extends Component {
                     alt="default pic"
                     width="400"
                   />
-                  <p>{post.date}</p>
+             
 
                   <a
                     id="title-tag"
