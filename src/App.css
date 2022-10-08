@@ -177,7 +177,7 @@
   padding: 20px;
   font-family: 'Peralta', cursive;
   color: rgb(61,40,30);
-  font-size: 80px;
+  font-size: 60px;
 }
 
 #post-detail-p {
@@ -348,7 +348,6 @@
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  
 }
 
 #comment-submit:hover {
