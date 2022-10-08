@@ -156,28 +156,29 @@
 #edit-btn {
   background-color: rgb(190,210,210);
   color: black;
-  font-size: 12px;
-  padding: 0 20px;
+  font-size: 15px;
+  padding: 5px 20px;
+  margin: 5px;
   border: 1px solid white;
   border-radius: 5px;
   cursor:pointer;
   font-weight: bold;
   float: right;
-
 }
 
 #edit-btn:hover {
   background-color:rgb(255,255,255);
-  color: red;
+  color: black;
   transform: scale(1.2);
 }
 
 #delete-btn {
   background-color: rgb(190,210,210);
   color: black;
-  font-size: 12px;
+  font-size: 15px;
   float: right;
-  padding: 0px 20px;
+  padding: 5px 20px;
+  margin: 5px;
   border: 1px solid white;
   border-radius: 5px;
   cursor:pointer;
@@ -186,7 +187,7 @@
 
 #delete-btn:hover {
   background-color:rgb(255,255,255);
-  color: red;
+  color: black;
   transform: scale(1.2); 
 }
 
