@@ -27,11 +27,26 @@ class PostList extends Component {
       <>
         <PostPage />
         <div>
-          {this.props?.posts?.map((post, index) => {
+          {this.props?.posts?.reverse().map((post, index) => {
             return (
               <section className="post-list" key={post._id}>
                 <div className="post-box">
-                  <p id="name-p">{post.name}</p>
+                  <div id="name-p">
+                    {post.name}
+                    {localStorage.getItem("id") !== post.name ? (
+                      ""
+                    ) : (
+                      <EditPage post={post} setPostId={this.props.setPostId} />
+                    )}
+                    {localStorage.getItem("id") !== post.name ? (
+                      ""
+                    ) : (
+                      <DeletePost
+                        deletePost={this.props.deletePost}
+                        postId={post._id}
+                      />
+                    )}
+                  </div>
                   <img
                     src="https://i.imgur.com/0dqdq3m.jpeg"
                     alt="default pic"
@@ -45,21 +60,7 @@ class PostList extends Component {
                   >
                     <p id="title-p">{post.title}</p>
                   </a>
-                  
                 </div>
-                {localStorage.getItem("id") !== post.name ? (
-                    ""
-                  ) : (
-                    <EditPage post={post} setPostId={this.props.setPostId} />
-                  )}
-                  {localStorage.getItem("id") !== post.name ? (
-                    ""
-                  ) : (
-                    <DeletePost
-                      deletePost={this.props.deletePost}
-                      postId={post._id}
-                    />
-                  )}
               </section>
             );
           })}

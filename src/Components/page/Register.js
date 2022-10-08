@@ -60,44 +60,44 @@ class Register extends Component {
         <h1 id="input-h1">Register</h1>
         <p id="reg-log-error">{this.state.error}</p>
         <form onSubmit={this.getUser} id="form">
-        
-            <label>Name: </label>
-            <div>
-              <input
-                className="id-input"
-                type="text"
-                placeholder="Username"
-                name="name"
-                id="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-            </div>
-            <label >ID: </label>
-            <div>
-              <input
-                className="id-input"
-                placeholder="Id"
-                type="text"
-                name="id"
-                id="id"
-                value={this.state.id}
-                onChange={this.handleChange}
-              />
-            </div>
-            <label>Password: </label>
-            <div>
-              <input
-                className="pw-input"
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <RegisterButton />
+          <label>Name: </label>
+          <div id="form-div">
+            <input
+              className="id-input"
+              type="text"
+              placeholder="Username"
+              name="name"
+              id="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <label>ID: </label>
+          <div id="form-div">
+            <input
+              className="id-input"
+              placeholder="Id"
+              type="text"
+              name="id"
+              id="id"
+              value={this.state.id}
+              onChange={this.handleChange}
+            />
+          </div>
+          <label>Password: </label>
+          <div id="form-div">
+            <input
+              className="pw-input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              minLength="5"
+            />
+          </div>
+          <RegisterButton />
         </form>
       </>
     );

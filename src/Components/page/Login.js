@@ -57,32 +57,32 @@ class Login extends Component {
         <Header id={this.state.id} />
         <h1 id="input-h1">Sign in</h1>
         <p id="reg-log-error">{this.state.error}</p>
-        <form onSubmit={this.postUser} id="form">   
-            <label>ID: </label>
-            <div>
-              <input
-                placeholder="Id"
-                className="id-input"
-                type="text"
-                name="id"
-                id="id"
-                value={this.state.id}
-                onChange={this.handleChange}
-              />
-            </div>        
-            <label>Password: </label>
-            <div>
-              <input
-                className="pw-input"
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <LoginButton />
+        <form onSubmit={this.postUser} id="form">
+          <label>ID: </label>
+          <div id="form-div">
+            <input
+              placeholder="Id"
+              className="id-input"
+              type="text"
+              name="id"
+              id="id"
+              value={this.state.id}
+              onChange={this.handleChange}
+            />
+          </div>
+          <label>Password: </label>
+          <div id="form-div">
+            <input
+              className="pw-input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <LoginButton />
         </form>
       </>
     );

@@ -14,4 +14,4 @@ function EditPage(props) {
   );
 }
 
-export default WithRouter(EditPage); 
+export default WithRouter(EditPage);
