@@ -35,11 +35,11 @@ class WritePost extends Component {
       .then((res) => res.json())
       .then((resJson) => {
         this.props.createPost(resJson);
-        this.setState({
-          name: "",
-          title: "",
-          content: "",
-        });
+        // this.setState({
+        //   name: "",
+        //   title: "",
+        //   content: "",
+        // });
         this.props.navigate("/");
       })
       .catch((error) => console.error({ Error: error }));

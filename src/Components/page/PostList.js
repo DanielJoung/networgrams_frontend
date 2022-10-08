@@ -52,7 +52,6 @@ class PostList extends Component {
                     alt="default pic"
                     width="400"
                   />
-             
 
                   <a
                     id="title-tag"
