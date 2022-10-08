@@ -146,6 +146,7 @@
 
 #title-tag {
   text-decoration: none; 
+
 }
 
 #title-tag:hover {
@@ -204,12 +205,10 @@
   padding: 20px;
   font-family: 'Peralta', cursive;
   color: rgb(61,40,30);
-  font-size: 60px;
+  font-size: 40px;
 }
 
-#post-detail-h1 {
-  border-bottom: 2px dotted black;
-}
+
 
 #post-detail-p {
   background-color: rgb(230,223,212);
@@ -390,3 +389,6 @@
   background-color: rgb(169, 116, 30);
 }
 
+#list-img {
+  margin: 10px 0;
+}

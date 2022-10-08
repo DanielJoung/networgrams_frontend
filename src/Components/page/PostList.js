@@ -4,14 +4,6 @@ import EditPage from "../ui/EditPage";
 import WithRouter from "./WithRouter";
 import PostPage from "../ui/PostPage";
 
-let baseURL = "";
-
-if (process.env.NODE_ENV === "development") {
-  baseURL = "http://localhost:3003";
-} else {
-  baseURL = process.env.REACT_APP_BACKEND_URL;
-}
-
 class PostList extends Component {
   constructor(props) {
     super(props);

@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import Header from "./Header";
 import WithRouter from "./WithRouter";
 
-let baseURL = "";
-if (process.env.NODE_ENV === "development") {
-  baseURL = "http://localhost:3003";
-} else {
-  baseURL = process.env.REACT_APP_BACKEND_URL;
-}
 class UpdatePost extends Component {
   constructor(props) {
     super(props);
